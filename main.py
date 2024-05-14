@@ -5,6 +5,7 @@ from server.dummy_server import *
 from am_gui import *
 
 if __name__ == "__main__":
+    # salut
     app = QtWidgets.QApplication(sys.argv)
     window = AM_GUI()
     window.run_app()
