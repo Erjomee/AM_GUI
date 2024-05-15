@@ -51,6 +51,8 @@ def temperature():
         w = float(random.randint(0, i))
         c = float(random.randint(0, i))
 
+time.sleep(2)
+
 # Create threads
 t1 = threading.Thread(target=batteryUpdate)
 t2 = threading.Thread(target=temperature)
