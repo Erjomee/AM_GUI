@@ -98,7 +98,6 @@ class MainWindow(QtWidgets.QTabWidget):
         for foot in ListOfFoots:
             for point in foot:
                 # Setting the brush
-                print(point.get_circle_center_x)
                 radial_gradient = QtGui.QRadialGradient(point.get_circle_center_x, point.get_circle_center_y, point.get_circle_radius)
                 radial_gradient.setColorAt(0, QtGui.QColor(255, 255, 255))  # white center
                 radial_gradient.setColorAt(1, QtGui.QColor(0, 0, 255))  # blue on border
