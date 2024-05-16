@@ -126,6 +126,9 @@ border: none
        <property name="spacing">
         <number>15</number>
        </property>
+       <property name="topMargin">
+        <number>6</number>
+       </property>
        <item>
         <widget class="QWidget" name="animatio_widget" native="true">
          <property name="sizePolicy">
@@ -151,7 +154,8 @@ border: 1px solid rgb(211, 211, 211)
              <string notr="true">QLabel{
     border: none;
    background-color: rgb(230, 230, 230);
-   padding-left: 5px
+   padding-left: 5px;
+font: 6pt &quot;MS Shell Dlg 2&quot;;
 
 }</string>
             </property>
@@ -179,7 +183,8 @@ border: none
              <string notr="true">QLabel{
     border: none;
    background-color: rgb(230, 230, 230);
-   padding-left: 5px
+   padding-left: 5px;
+font: 6pt &quot;MS Shell Dlg 2&quot;;
 
 
 }</string>
@@ -223,10 +228,22 @@ border: 1px solid rgb(211, 211, 211)
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_8">
           <item>
-           <widget class="QLabel" name="label_27">
+           <widget class="QLabel" name="left_foot">
             <property name="styleSheet">
              <string notr="true">QLabel{
   border: none
+}</string>
+            </property>
+            <property name="text">
+             <string>TextLabel</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="right_foot">
+            <property name="styleSheet">
+             <string notr="true">QLabel{
+	border : none
 }</string>
             </property>
             <property name="text">
@@ -238,23 +255,40 @@ border: 1px solid rgb(211, 211, 211)
         </widget>
        </item>
        <item>
-        <widget class="QWidget" name="button1" native="true">
+        <widget class="QWidget" name="widget_27" native="true">
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
          <property name="styleSheet">
           <string notr="true">QWidget{
  background-color: blue;
 border: 1px solid black
-}</string>
+}
+
+QWidget:hover{
+  cursor: pointer;
+	background-color: rgb(0, 85, 255);
+}
+
+
+
+</string>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <property name="spacing">
+           <number>4</number>
+          </property>
           <item>
-           <widget class="QPushButton" name="pushButton">
+           <widget class="QPushButton" name="force_quit_button">
             <property name="styleSheet">
-             <string notr="true">QPushButton{
+             <string notr="true">
+
+QPushButton{
  color: white;
  border : none;
 	font: 12pt &quot;MS Shell Dlg 2&quot;;
 font-weight: bold;
-
+background-color : none
 
 
 }</string>
@@ -278,9 +312,9 @@ font-weight: bold;
 border: none
 }</string>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout_3" stretch="5,5,50,1,4">
+      <layout class="QVBoxLayout" name="verticalLayout_3" stretch="5,5,50,4">
        <property name="spacing">
-        <number>4</number>
+        <number>15</number>
        </property>
        <item>
         <widget class="QWidget" name="battery_widget" native="true">
@@ -297,7 +331,8 @@ border: 1px solid rgb(211, 211, 211)
             <property name="styleSheet">
              <string notr="true">QLabel{
 
-border: none
+border: none;
+font: 6pt &quot;MS Shell Dlg 2&quot;;
 
 }</string>
             </property>
@@ -352,9 +387,12 @@ border: 1px solid rgb(211, 211, 211)
             <property name="styleSheet">
              <string notr="true">QLabel{
 
-border: none
+border: none;
+font: 6pt &quot;MS Shell Dlg 2&quot;;
 
-}</string>
+}
+
+</string>
             </property>
             <property name="text">
              <string>Usage Time : </string>
@@ -404,7 +442,7 @@ border: 1px solid rgb(211, 211, 211);
             <property name="styleSheet">
              <string notr="true">QLabel{
 border:none;
-
+font: 6pt &quot;MS Shell Dlg 2&quot;;
 
 
 }</string>
@@ -441,6 +479,11 @@ border:none
                </property>
                <item>
                 <widget class="QLabel" name="label_7">
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+font: 8pt &quot;MS Shell Dlg 2&quot;;
+}</string>
+                 </property>
                  <property name="text">
                   <string>RH_Flex</string>
                  </property>
@@ -486,6 +529,11 @@ border:none
                </property>
                <item>
                 <widget class="QLabel" name="label_12">
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+font: 8pt &quot;MS Shell Dlg 2&quot;;
+}</string>
+                 </property>
                  <property name="text">
                   <string>RA_Lat</string>
                  </property>
@@ -531,6 +579,11 @@ border:none
                </property>
                <item>
                 <widget class="QLabel" name="label_15">
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+font: 8pt &quot;MS Shell Dlg 2&quot;;
+}</string>
+                 </property>
                  <property name="text">
                   <string>RA_Med</string>
                  </property>
@@ -576,6 +629,12 @@ border:none
                </property>
                <item>
                 <widget class="QLabel" name="label_10">
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+font: 8pt &quot;MS Shell Dlg 2&quot;;
+}
+</string>
+                 </property>
                  <property name="text">
                   <string>RK</string>
                  </property>
@@ -622,7 +681,9 @@ border:none
                <item>
                 <widget class="QLabel" name="label_3">
                  <property name="styleSheet">
-                  <string notr="true"/>
+                  <string notr="true">QLabel{
+font: 8pt &quot;MS Shell Dlg 2&quot;;
+}</string>
                  </property>
                  <property name="text">
                   <string>LH_Abd</string>
@@ -673,6 +734,11 @@ border:none
                </property>
                <item>
                 <widget class="QLabel" name="label_5">
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+font: 8pt &quot;MS Shell Dlg 2&quot;;
+}</string>
+                 </property>
                  <property name="text">
                   <string>LH_Rot</string>
                  </property>
@@ -719,6 +785,11 @@ border:none
                </property>
                <item>
                 <widget class="QLabel" name="label_4">
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+font: 8pt &quot;MS Shell Dlg 2&quot;;
+}</string>
+                 </property>
                  <property name="text">
                   <string>RH_Abd</string>
                  </property>
@@ -764,6 +835,11 @@ border:none
                </property>
                <item>
                 <widget class="QLabel" name="label_11">
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+font: 8pt &quot;MS Shell Dlg 2&quot;;
+}</string>
+                 </property>
                  <property name="text">
                   <string>LA_Lat</string>
                  </property>
@@ -809,6 +885,11 @@ border:none
                </property>
                <item>
                 <widget class="QLabel" name="label_8">
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+font: 8pt &quot;MS Shell Dlg 2&quot;;
+}</string>
+                 </property>
                  <property name="text">
                   <string>LH_Flex</string>
                  </property>
@@ -854,6 +935,11 @@ border:none
                </property>
                <item>
                 <widget class="QLabel" name="label_9">
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+font: 8pt &quot;MS Shell Dlg 2&quot;;
+}</string>
+                 </property>
                  <property name="text">
                   <string>LK</string>
                  </property>
@@ -899,6 +985,11 @@ border:none
                </property>
                <item>
                 <widget class="QLabel" name="label_6">
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+font: 8pt &quot;MS Shell Dlg 2&quot;;
+}</string>
+                 </property>
                  <property name="text">
                   <string>RH_Rot</string>
                  </property>
@@ -944,6 +1035,11 @@ border:none
                </property>
                <item>
                 <widget class="QLabel" name="label_14">
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+font: 8pt &quot;MS Shell Dlg 2&quot;;
+}</string>
+                 </property>
                  <property name="text">
                   <string>LA_Med</string>
                  </property>
@@ -976,15 +1072,22 @@ border:none
         </widget>
        </item>
        <item>
-        <widget class="QWidget" name="widget_19" native="true"/>
-       </item>
-       <item>
         <widget class="QWidget" name="widget_6" native="true">
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
          <property name="styleSheet">
           <string notr="true">QWidget{
  background-color: blue;
 border: 1px solid black
-}</string>
+}
+
+QWidget:hover{
+  cursor: pointer;
+	background-color: rgb(0, 85, 255);
+}
+
+</string>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_3">
           <item>
@@ -995,6 +1098,7 @@ border: 1px solid black
  border : none;
 	font: 12pt &quot;MS Shell Dlg 2&quot;;
 font-weight: bold;
+background-color : none
 
 
 }</string>
@@ -1019,9 +1123,9 @@ border: none
 	
 }</string>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout_18" stretch="10,20,60,1,6">
+      <layout class="QVBoxLayout" name="verticalLayout_18" stretch="10,20,60,6">
        <property name="spacing">
-        <number>6</number>
+        <number>15</number>
        </property>
        <item>
         <widget class="QWidget" name="widget_10" native="true">
@@ -1354,8 +1458,8 @@ border: 1px solid black
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>211</width>
-               <height>147</height>
+               <width>214</width>
+               <height>140</height>
               </rect>
              </property>
              <property name="styleSheet">
@@ -1397,13 +1501,19 @@ border: none}</string>
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>211</width>
-                   <height>147</height>
+                   <width>214</width>
+                   <height>140</height>
                   </rect>
                  </property>
                  <layout class="QVBoxLayout" name="verticalLayout_29" stretch="1,1,1,1,0">
                   <item>
                    <widget class="QLabel" name="label_33">
+                    <property name="styleSheet">
+                     <string notr="true">QL	abel{
+	font: 8pt &quot;MS Shell Dlg 2&quot;;
+
+}</string>
+                    </property>
                     <property name="text">
                      <string>Sensor fault 1: LH Inc Encoder error</string>
                     </property>
@@ -1458,20 +1568,27 @@ border: none}</string>
         </widget>
        </item>
        <item>
-        <widget class="QWidget" name="widget_20" native="true"/>
-       </item>
-       <item>
         <layout class="QHBoxLayout" name="horizontalLayout_7">
          <property name="spacing">
           <number>10</number>
          </property>
          <item>
           <widget class="QWidget" name="widget_17" native="true">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
            <property name="styleSheet">
             <string notr="true">QWidget{
  background-color: blue;
 border: 1px solid black
-}</string>
+}
+QWidget:hover{
+  cursor: pointer;
+	background-color: rgb(0, 85, 255);
+
+}
+
+</string>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_20">
             <item>
@@ -1482,9 +1599,11 @@ border: 1px solid black
  border : none;
 	font: 12pt &quot;MS Shell Dlg 2&quot;;
 font-weight: bold;
+background-color: none
 
+}
 
-}</string>
+</string>
               </property>
               <property name="text">
                <string>End data storage</string>
@@ -1496,11 +1615,21 @@ font-weight: bold;
          </item>
          <item>
           <widget class="QWidget" name="widget_18" native="true">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
            <property name="styleSheet">
             <string notr="true">QWidget{
  background-color: blue;
 border: 1px solid black
-}</string>
+}
+
+QWidget:hover{
+  cursor: pointer;
+	background-color: rgb(0, 85, 255);
+
+}
+</string>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_19">
             <item>
@@ -1511,6 +1640,7 @@ border: 1px solid black
  border : none;
 	font: 12pt &quot;MS Shell Dlg 2&quot;;
 font-weight: bold;
+background-color: none
 
 
 }</string>

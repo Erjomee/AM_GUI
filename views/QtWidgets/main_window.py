@@ -27,17 +27,38 @@ class MainWindow(QtWidgets.QTabWidget):
         uic.loadUi('views/ui_object/mainwindow.ui', self)
         self.server = Server(SERVER_IP, SERVER_PORT)
 
-        # Charger l'image à partir du fichier
-        self.pixmap = QPixmap('assets/foot.jpg')  # Assurez-vous que le chemin d'accès au fichier est correct
+        ####################### LEFT FOOT ########################
+
+        # Charging left foot image
+        self.left_foot_pixmap = QPixmap('assets/left_foot.jpg')  # Assurez-vous que le chemin d'accès au fichier est correct
 
         # Récupérer le QLabel par son nom d'objet
-        label = self.findChild(QLabel, "label_27")
+        label = self.findChild(QLabel, "left_foot")
 
-        # Modifier le QLabel pour afficher l'image
-        label.setPixmap(self.pixmap)
+        # Adding pixmap to the QLabel
+        label.setPixmap(self.left_foot_pixmap)
         label.setScaledContents(True)  # Si vous souhaitez que l'image soit mise à l'échelle pour s'adapter au QLabel
 
-        self.cpt = 0
+        ####################### RIGHT FOOT ########################
+
+        # Charging left foot image
+        self.right_foot_pixmap = QPixmap('assets/right_foot.jpg')  # Assurez-vous que le chemin d'accès au fichier est correct
+
+        # Récupérer le QLabel par son nom d'objet
+        label = self.findChild(QLabel, "right_foot")
+
+        # Adding pixmap to the QLabel
+        label.setPixmap(self.right_foot_pixmap)
+        label.setScaledContents(True)  # Si vous souhaitez que l'image soit mise à l'échelle pour s'adapter au QLabel
+
+        self.foots_pixmap = {"left_foot": self.left_foot_pixmap, "right_foot": self.right_foot_pixmap}
+
+
+        ####################### RIGHT FOOT ########################
+        self.ForceQuitButton = self.findChild(QtWidgets.QPushButton,"force_quit_button")
+        self.ForceQuitButton.clicked.connect(self.closeEvent)
+
+
         self.test_update_pixmap()
 
     def run_serv(self):
@@ -83,22 +104,24 @@ class MainWindow(QtWidgets.QTabWidget):
         self.label_usage_time.setText(f"{hours:02d}:{minutes:02d}:{seconds:02d}")
 
     def update_pixmap(self, LeftFootPressurePoints , RightFootPressurePoints):
-        # Instance of QPixmap base on the foot image
-        pixmap = QPixmap('assets/foot.jpg')
 
-        # Create a copy of the pixmap
-        pixmap_copy = self.pixmap.copy()
+        ListOfFootsCoordsPressure = {"left_foot": LeftFootPressurePoints, "right_foot": RightFootPressurePoints}
 
-        # Painting object on the pixmap
-        painter = QtGui.QPainter(pixmap_copy)
+        # For each foot
+        for foot , foot_pixmap in self.foots_pixmap.items():
 
-        ListOfFoots = [LeftFootPressurePoints,RightFootPressurePoints]
+            # Create a copy of the pixmap
+            pixmap_copy = foot_pixmap.copy()
 
-        # Drawing point for each foot
-        for foot in ListOfFoots:
-            for point in foot:
+            # Painting object on the pixmap
+            painter = QtGui.QPainter(pixmap_copy)
+
+            # Drawing point for each foot
+
+            for point in ListOfFootsCoordsPressure.get(foot):
                 # Setting the brush
-                radial_gradient = QtGui.QRadialGradient(point.get_circle_center_x, point.get_circle_center_y, point.get_circle_radius)
+                radial_gradient = QtGui.QRadialGradient(point.get_circle_center_x, point.get_circle_center_y,
+                                                        point.get_circle_radius)
                 radial_gradient.setColorAt(0, QtGui.QColor(255, 255, 255))  # white center
                 radial_gradient.setColorAt(1, QtGui.QColor(0, 0, 255))  # blue on border
                 brush = QtGui.QBrush(radial_gradient)
@@ -117,21 +140,21 @@ class MainWindow(QtWidgets.QTabWidget):
                 # height: Height of the rectangle
                 painter.drawEllipse(point.get_circle_center_x - point.get_circle_radius, point.get_circle_center_y - point.get_circle_radius, point.get_circle_radius * 2,
                                     point.get_circle_radius * 2)
-        painter.end()
+            painter.end()
 
-        # Modifier le QLabel pour afficher la nouvelle image
-        label = self.findChild(QLabel, "label_27")
-        label.setPixmap(pixmap_copy)
-        label.setScaledContents(True)  # Set scaledContents to True scaledContents to True
+            # Modifier le QLabel pour afficher la nouvelle image
+            label = self.findChild(QLabel, foot)
+            label.setPixmap(pixmap_copy)
+            label.setScaledContents(True)  # Set scaledContents to True scaledContents to True
 
 
     def test_update_pixmap(self):
         point1 = PressurePoint(350,350 , 75 , 10)
         point2 = PressurePoint(200,800 , 50 , 10)
 
-        point3 = PressurePoint(660,300 , 50 , 10)
-        point4 = PressurePoint(700,500 , 75 , 10)
-        point5 = PressurePoint(690,700 , 40 , 10)
+        point3 = PressurePoint(200,300 , 50 , 10)
+        point4 = PressurePoint(250,500 , 75 , 10)
+        point5 = PressurePoint(175,700 , 40 , 10)
 
         LeftFootPressurePoints = [point1,point2]
         RightFootPressurePoints = [point3,point4,point5]
