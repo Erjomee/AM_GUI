@@ -155,7 +155,7 @@ border: 1px solid rgb(211, 211, 211)
     border: none;
    background-color: rgb(230, 230, 230);
    padding-left: 5px;
-font: 6pt &quot;MS Shell Dlg 2&quot;;
+font: 8pt &quot;MS Shell Dlg 2&quot;;
 
 }</string>
             </property>
@@ -184,7 +184,7 @@ border: none
     border: none;
    background-color: rgb(230, 230, 230);
    padding-left: 5px;
-font: 6pt &quot;MS Shell Dlg 2&quot;;
+font: 8pt &quot;MS Shell Dlg 2&quot;;
 
 
 }</string>
@@ -332,9 +332,11 @@ border: 1px solid rgb(211, 211, 211)
              <string notr="true">QLabel{
 
 border: none;
-font: 6pt &quot;MS Shell Dlg 2&quot;;
+font: 8pt &quot;MS Shell Dlg 2&quot;;
 
-}</string>
+}
+
+</string>
             </property>
             <property name="text">
              <string>Battery Level :</string>
@@ -388,7 +390,7 @@ border: 1px solid rgb(211, 211, 211)
              <string notr="true">QLabel{
 
 border: none;
-font: 6pt &quot;MS Shell Dlg 2&quot;;
+font: 8pt &quot;MS Shell Dlg 2&quot;;
 
 }
 
