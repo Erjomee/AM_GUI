@@ -1,11 +1,7 @@
 import sys
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-from server.dummy_server import Server
-from views.QtWidgets.start_window import StartWindow
-from views.QtWidgets.main_window import MainWindow
+from Component.start_window import StartWindow
+from Component.main_window import MainWindow
 # from views.QtWidgets.exit_window import ExitWindow
-
 
 class AM_GUI():
     def __init__(self):
