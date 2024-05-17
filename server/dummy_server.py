@@ -36,15 +36,14 @@ class Server(QObject):
     def handle_client(self, client_socket):
         try:
             while True:
-                received_data = client_socket.recv(64)
+                received_data = client_socket.recv(128)
                 if not received_data:
                     break
                 print('data size', len(received_data))
 
-                h,w, d, x = struct.unpack('<iffi', received_data[2:18])
-                data = [h, w, d, x]
-                print(data)
-                self.newData.emit(data)
+                data = struct.unpack('<iffiiiiii', received_data[2:38])
+                print("salut" , list(data))
+                self.newData.emit(list(data))
         finally:
             client_socket.close()
 
