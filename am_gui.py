@@ -7,7 +7,7 @@ class AM_GUI():
     def __init__(self):
         self.is_running = True
         self.start_window = StartWindow()
-        self.main_window = MainWindow()
+        self.main_window = None
 
     def run_app(self):
         # Showing Start Window
@@ -15,6 +15,7 @@ class AM_GUI():
         self.start_window.StartButton.clicked.connect(self.show_main_window)
 
     def show_main_window(self):
+        self.main_window = MainWindow()
         
         # Starting server
         self.main_window.run_serv()

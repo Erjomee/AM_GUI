@@ -21,8 +21,8 @@ class FootWidget(QtWidgets.QWidget):
         label = self.main_window.findChild(QLabel, "left_foot")
 
         # Adding pixmap to the QLabel
-        label.setPixmap(self.left_foot_pixmap)
         label.setScaledContents(True)  # Si vous souhaitez que l'image soit mise à l'échelle pour s'adapter au QLabel
+        label.setPixmap(self.left_foot_pixmap)
 
         ####################### RIGHT FOOT ########################
 
@@ -33,8 +33,8 @@ class FootWidget(QtWidgets.QWidget):
         label = self.main_window.findChild(QLabel, "right_foot")
 
         # Adding pixmap to the QLabel
-        label.setPixmap(self.right_foot_pixmap)
         label.setScaledContents(True)  # Si vous souhaitez que l'image soit mise à l'échelle pour s'adapter au QLabel
+        label.setPixmap(self.right_foot_pixmap)
 
         self.foots_pixmap = {"left_foot": self.left_foot_pixmap, "right_foot": self.right_foot_pixmap}
 
@@ -42,7 +42,7 @@ class FootWidget(QtWidgets.QWidget):
 
 
     def init_sensor(self):
-        point1 = PressurePoint(220, 68, 5, QtGui.QColor(255,140,0))
+        point1 = PressurePoint(220, 0, 5, QtGui.QColor(255,140,0))
         point2 = PressurePoint(220, -70, 5, QtGui.QColor(255,140,0))
         point3right = PressurePoint(-70, 7, 5, QtGui.QColor(255,140,0))
         point3left = PressurePoint(-70, -8, 5, QtGui.QColor(255,140,0))
@@ -52,8 +52,6 @@ class FootWidget(QtWidgets.QWidget):
         RightFootPressurePoints = [point1, point2,point3right,center_point]
 
         self.update_pixmap(LeftFootPressurePoints , RightFootPressurePoints , True)
-
-
 
     def update_pixmap(self, LeftFootPressurePoints , RightFootPressurePoints , is_permanent = False):
 
@@ -141,6 +139,7 @@ class FootWidget(QtWidgets.QWidget):
 
                 # Settings up border color with radius
                 widget_label.setStyleSheet("border: 2px solid black;border-radius: 10px")
+                widget_label.move(0,0)
             else:
                 # Create a graphics opacity effect and set the opacity
                 opacity_effect = QGraphicsOpacityEffect()
@@ -153,9 +152,11 @@ class FootWidget(QtWidgets.QWidget):
 
                 # Removing border
                 widget_label.setStyleSheet("border: none")
+                widget_label.move(0,0)
 
 
             label.setScaledContents(True)  # Set scaledContents to True scaledContents to True
+
 
     def BarycenterOf(self, ListOfPressurePoints):
         lst_pts_coord = np.array([[Point.get_circle_center_x, Point.get_circle_center_y] for Point in ListOfPressurePoints])

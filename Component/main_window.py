@@ -4,6 +4,8 @@ import random
 
 from PyQt5 import QtWidgets, uic, QtCore
 from PyQt5.QtCore import *
+
+from views.QtWidgets.FootWidget2 import FootWidget2
 from views.QtWidgets.Object.PressurePoint import PressurePoint
 from views.QtWidgets.FootWidget import FootWidget
 from server.dummy_server import Server
@@ -21,11 +23,11 @@ class MainWindow(QtWidgets.QTabWidget):
         self.active_time = 0
         self.timer = QTimer()
         self.timer.timeout.connect(self.update_usage_time)
-        uic.loadUi('views/ui_object/mainwindow.ui', self)
+        uic.loadUi('views/ui_object/mainwindow2.ui', self)
         self.server = Server(SERVER_IP, SERVER_PORT)
 
-        self.foot_widget = FootWidget(self)
-        self.test_update_pixmap()
+        self.foot_widget = FootWidget2(self)
+        # self.test_update_pixmap()
 
         self.ForceQuitButton = self.findChild(QtWidgets.QPushButton, "force_quit_button")
         self.ForceQuitButton.clicked.connect(self.closeEvent)

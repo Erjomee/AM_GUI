@@ -61,10 +61,10 @@ def batteryUpdate():
 
 def temperature():
     global w, c , x,y,pressure,x2,y2,pressure2
-    for i in range(1000):
+    for i in range(10000):
         test_data = [battery, w, c, x,y,pressure,x2,y2,pressure2]
         send_data(SERVER_IP, SERVER_PORT, test_data)
-        time.sleep(0.5)
+        time.sleep(0.03)
         w = float(random.randint(0, i))
         c = float(random.randint(0, i))
         x = random.randint(-85, 235)
