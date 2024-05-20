@@ -75,9 +75,6 @@ class FootWidget2(QWidget):
     #
     def update_feets_pos(self, x_coeff , y_coeff):
 
-
-
-
         pass
         # # print(self.left_foot_pixmap_item.x())
         # print(x_coeff)
@@ -252,8 +249,7 @@ class FootWidget2(QWidget):
         self.right_foot_pixmap_item.setPos(view_size.width() * 0.2 + self.left_foot_pixmap_item.pixmap().width(),
                                            view_size.height() * 0.5 - (self.left_foot_pixmap_item.pixmap().height()) / 2)
 
-
-        self.update_feets_pos()
+        # self.update_feets_pos()
         self.update_pixmap(self.LeftFootPressurePoints , self.RightFootPressurePoints)
         # Call the original resize event
         super(QGraphicsView, self.graphics_view).resizeEvent(event)
