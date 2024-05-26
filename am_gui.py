@@ -19,7 +19,6 @@ class AM_GUI():
         
         # Starting server
         self.main_window.run_serv()
-
         # Showing Main Window
         self.main_window.show()
 
