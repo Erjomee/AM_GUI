@@ -9,6 +9,7 @@ from views.QtWidgets.FootWidget2 import FootWidget2
 from views.QtWidgets.Object.PressurePoint import PressurePoint
 from views.QtWidgets.FootWidget import FootWidget
 from server.dummy_server import Server
+from views.QtWidgets.widget_3dplot import Widget3DPlot
 
 SERVER_IP = "localhost"
 SERVER_PORT = 1818
@@ -26,11 +27,19 @@ class MainWindow(QtWidgets.QTabWidget):
         uic.loadUi('views/ui_object/mainwindow.ui', self)
         self.server = Server(SERVER_IP, SERVER_PORT)
 
-        self.foot_widget = FootWidget2(self)
-        # self.3dversion
+        self.initUI()
 
         self.ForceQuitButton = self.findChild(QtWidgets.QPushButton, "force_quit_button")
         self.ForceQuitButton.clicked.connect(self.closeEvent)
+
+
+    def initUI(self):
+        self.foot_widget = FootWidget2(self)
+        central_widget = self.findChild(QtWidgets.QWidget, "animation_widget")
+        layout = QtWidgets.QVBoxLayout(central_widget)
+        # Create the plot widget
+        self.plot_widget = Widget3DPlot()
+        layout.addWidget(self.plot_widget, 70)
 
 
     def run_serv(self):

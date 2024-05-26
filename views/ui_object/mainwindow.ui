@@ -135,7 +135,7 @@ background-color: rgb(239, 239, 239);
 border: none
 }</string>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout" stretch="8,8,1">
+      <layout class="QVBoxLayout" name="verticalLayout" stretch="10,8,1">
        <property name="spacing">
         <number>15</number>
        </property>
@@ -153,8 +153,7 @@ border: none
          <property name="styleSheet">
           <string notr="true">QWidget{
 background-color: rgb(255, 255, 255);
-border: 1px solid rgb(211, 211, 211)
-
+border: 1px solid rgb(211, 211, 211);
 }</string>
          </property>
         </widget>
