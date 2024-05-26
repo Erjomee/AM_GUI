@@ -1,7 +1,5 @@
 import sys
 from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import *
-from server.dummy_server import *
 from am_gui import *
 
 if __name__ == "__main__":
