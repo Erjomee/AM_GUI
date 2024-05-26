@@ -41,8 +41,8 @@ class Server(QObject):
                     break
                 print('data size', len(received_data))
 
-                h,w, d, x = struct.unpack('<iffi', received_data[2:18])
-                data = [h, w, d, x]
+                h, w, d, c, x1, y1, p1 = struct.unpack('<ifffffi', received_data[2:30])
+                data = [h, w, d, c, x1, y1, p1]
                 print(data)
                 self.newData.emit(data)
         finally:

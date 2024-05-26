@@ -19,10 +19,8 @@ class AM_GUI():
         self.start_window.StartButton.clicked.connect(self.show_main_window)
 
     def show_main_window(self):
-        
         # Starting server
         self.main_window.run_serv()
-
         # Showing Main Window
         self.main_window.show()
 
