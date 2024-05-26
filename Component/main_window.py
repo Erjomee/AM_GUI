@@ -23,11 +23,11 @@ class MainWindow(QtWidgets.QTabWidget):
         self.active_time = 0
         self.timer = QTimer()
         self.timer.timeout.connect(self.update_usage_time)
-        uic.loadUi('views/ui_object/mainwindow2.ui', self)
+        uic.loadUi('views/ui_object/mainwindow.ui', self)
         self.server = Server(SERVER_IP, SERVER_PORT)
 
         self.foot_widget = FootWidget2(self)
-        # self.test_update_pixmap()
+        # self.3dversion
 
         self.ForceQuitButton = self.findChild(QtWidgets.QPushButton, "force_quit_button")
         self.ForceQuitButton.clicked.connect(self.closeEvent)
@@ -45,6 +45,7 @@ class MainWindow(QtWidgets.QTabWidget):
 
     @pyqtSlot(list)
     def updateData(self, data):
+        print(data)
         if not self.active:
             self.active = True
             self.status_label.setText(f"In Progress")
@@ -52,7 +53,6 @@ class MainWindow(QtWidgets.QTabWidget):
                                             "12pt 'MS Shell Dlg 2';")
             self.active_time = time.time()
 
-        print("l:", data[0], "w:", data[1], "d:", data[2], "x:", data[3])
         self.progressBar.setValue(data[0])
 
         self.label_13.setText(f"{data[0]}% / {data[1]}˚C")
@@ -78,7 +78,7 @@ class MainWindow(QtWidgets.QTabWidget):
 
         self.foot_widget.update_pixmap(LeftFootPressurePoints,RightFootPressurePoints)
 
-        self.timer.start(100)
+        self.timer.start()
 
     def update_usage_time(self):
         elapsed_time = time.time() - self.active_time
@@ -86,17 +86,3 @@ class MainWindow(QtWidgets.QTabWidget):
         minutes = int((elapsed_time % 3600) // 60)
         seconds = int(elapsed_time % 60)
         self.label_usage_time.setText(f"{hours:02d}:{minutes:02d}:{seconds:02d}")
-
-    def test_update_pixmap(self):
-        point1left = PressurePoint(40, 0, 25)
-        point2left = PressurePoint(100, -70, 18)
-        point3left = PressurePoint(-15, -70, 30)
-
-        point1right = PressurePoint(40, 0, 15)
-        point2right = PressurePoint(120, 70, 10)
-        point3right = PressurePoint(200, 20, 20)
-
-        LeftFootPressurePoints = [point1left, point2left, point3left]
-        RightFootPressurePoints = [point1right, point2right, point3right]
-
-        self.foot_widget.update_pixmap(LeftFootPressurePoints, RightFootPressurePoints)
