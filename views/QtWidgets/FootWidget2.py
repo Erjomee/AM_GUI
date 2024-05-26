@@ -218,25 +218,25 @@ class FootWidget2(QWidget):
                     # Add the ellipse to the scene
                     self.scene.addItem(pressure_point_ellipse)
 
-                ####################### Calculation of BaryCenter ########################
-                if not is_permanent:
-                    # Get the barycenter point
-                    bary_center_point = self.BarycenterOf(ListOfFootsCoordsPressure.get(foot))
-                    x_bary_center_point_coord = x_origin_foot_pixmap_item_coord - ((bary_center_point.get_circle_center_y / 170) * foot_pixmap_item.pixmap().width()) - bary_center_point.get_pressure
-                    y_bary_center_point_coord = y_origin_foot_pixmap_item_coord - ((bary_center_point.get_circle_center_x / 320) * foot_pixmap_item.pixmap().height()) - bary_center_point.get_pressure
-                    bary_center_point_ellipse = QGraphicsEllipseItem(x_bary_center_point_coord, y_bary_center_point_coord, bary_center_point.get_pressure * 2, bary_center_point.get_pressure * 2)
-
-                    # Create a radial gradient for the ellipse
-                    radial_gradient = QRadialGradient(x_bary_center_point_coord + bary_center_point.get_pressure, y_bary_center_point_coord + bary_center_point.get_pressure, bary_center_point.get_pressure)
-                    radial_gradient.setColorAt(0, bary_center_point.get_gradient_center)  # Color at the center
-                    radial_gradient.setColorAt(1, bary_center_point.get_border_color)  # Color at the border
-
-                    # Create a brush with the radial gradient
-                    brush = QBrush(radial_gradient)
-                    bary_center_point_ellipse.setBrush(brush)
-
-                    # Add the ellipse to the scene
-                    self.scene.addItem(bary_center_point_ellipse)
+                # ####################### Calculation of BaryCenter ########################
+                # if not is_permanent:
+                #     # Get the barycenter point
+                #     bary_center_point = self.BarycenterOf(ListOfFootsCoordsPressure.get(foot))
+                #     x_bary_center_point_coord = x_origin_foot_pixmap_item_coord - ((bary_center_point.get_circle_center_y / 170) * foot_pixmap_item.pixmap().width()) - bary_center_point.get_pressure
+                #     y_bary_center_point_coord = y_origin_foot_pixmap_item_coord - ((bary_center_point.get_circle_center_x / 320) * foot_pixmap_item.pixmap().height()) - bary_center_point.get_pressure
+                #     bary_center_point_ellipse = QGraphicsEllipseItem(x_bary_center_point_coord, y_bary_center_point_coord, bary_center_point.get_pressure * 2, bary_center_point.get_pressure * 2)
+                #
+                #     # Create a radial gradient for the ellipse
+                #     radial_gradient = QRadialGradient(x_bary_center_point_coord + bary_center_point.get_pressure, y_bary_center_point_coord + bary_center_point.get_pressure, bary_center_point.get_pressure)
+                #     radial_gradient.setColorAt(0, bary_center_point.get_gradient_center)  # Color at the center
+                #     radial_gradient.setColorAt(1, bary_center_point.get_border_color)  # Color at the border
+                #
+                #     # Create a brush with the radial gradient
+                #     brush = QBrush(radial_gradient)
+                #     bary_center_point_ellipse.setBrush(brush)
+                #
+                #     # Add the ellipse to the scene
+                #     self.scene.addItem(bary_center_point_ellipse)
 
             else:
                 foot_pixmap_item.setOpacity(0.5)
@@ -340,7 +340,7 @@ class FootWidget2(QWidget):
         new_foot_width = self.scene.sceneRect().width() * 0.4
 
         # # Taking 45% of the Graphics for each foot's height
-        new_foot_height = self.scene.sceneRect().height() * 0.9
+        new_foot_height = self.scene.sceneRect().height() * 0.8
 
         x_coeff = self.scene.width() / old_width
         y_coeff = self.scene.height() / old_height
@@ -348,12 +348,12 @@ class FootWidget2(QWidget):
         # # Resizing Left foot
         self.left_foot_pixmap_item.setPixmap(self.left_foot_pixmap.scaled(int(new_foot_width), int(new_foot_height)))
         self.left_foot_pixmap_item.setPos(self.left_foot_pixmap_item.x() * x_coeff,
-                                          self.left_foot_pixmap_item.y() * y_coeff)
+                                          self.scene.sceneRect().height() * 0.5 - new_foot_height*0.5)
         #
         # # Resizing Right foot
         self.right_foot_pixmap_item.setPixmap(self.right_foot_pixmap.scaled(int(new_foot_width), int(new_foot_height)))
         self.right_foot_pixmap_item.setPos(self.right_foot_pixmap_item.x() * x_coeff,
-                                           self.right_foot_pixmap_item.y() * y_coeff)
+                                           self.scene.sceneRect().height() * 0.5 - new_foot_height*0.5)
 
         # # self.update_feets_pos()
         self.update_pixmap(self.LeftFootPressurePoints, self.RightFootPressurePoints)
