@@ -54,7 +54,7 @@ class MainWindow(QtWidgets.QTabWidget):
 
     @pyqtSlot(list)
     def updateData(self, data):
-        print(data)
+        # print(data)
         if not self.active:
             self.active = True
             self.status_label.setText(f"In Progress")
@@ -66,24 +66,12 @@ class MainWindow(QtWidgets.QTabWidget):
 
         self.label_13.setText(f"{data[0]}% / {data[1]}˚C")
         self.label_16.setText(f"{data[0]}% / {data[2]}˚C")
+        self.label_17.setText(f"{data[0]}% / {data[3]}˚C")
+
 
         # Update foot pressure points
-        LeftFootPressurePoints = []
-        RightFootPressurePoints = []
-        point1 = PressurePoint(data[3],data[4],data[5])
-        point2 = PressurePoint(data[6],data[7],data[8])
-        cond1 , cond2 = random.randint(0, 1),random.randint(0, 1)
-
-        # Conditions
-        conditions = [cond1, cond2]
-        # Points de pression
-        points = [point1, point2]
-        # Boucle sur les conditions et les points
-        for condition, point in zip(conditions, points):
-            if condition == 0:
-                LeftFootPressurePoints.append(point)
-            else:
-                RightFootPressurePoints.append(point)
+        LeftFootPressurePoints = [PressurePoint(data[8],data[9],data[12])]
+        RightFootPressurePoints = [PressurePoint(data[10],data[11],data[15])]
 
         self.foot_widget.update_pixmap(LeftFootPressurePoints,RightFootPressurePoints)
 

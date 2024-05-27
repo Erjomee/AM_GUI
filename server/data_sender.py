@@ -16,31 +16,31 @@ def send_data(ip, port, data):
     print("Connected to the server.")
 
     data_bytes = bytearray(128)
-    data_bytes[2:6] = struct.pack('<i', data["Battery"])
+    data_bytes[2:6] = struct.pack('<i', data["Battery"])  #0
 
-    data_bytes[6:10] = struct.pack('<f', data["Temp1"])
-    data_bytes[10:14] = struct.pack('<f', data["Temp2"])
-    data_bytes[14:18] = struct.pack('<f', data["Temp3"])
+    data_bytes[6:10] = struct.pack('<f', data["Temp1"])  #1
+    data_bytes[10:14] = struct.pack('<f', data["Temp2"])  #2
+    data_bytes[14:18] = struct.pack('<f', data["Temp3"])  #3
 
-    data_bytes[18:22] = struct.pack('<f', data["LFoot_x"])
-    data_bytes[22:26] = struct.pack('<f', data["LFoot_y"])
-    data_bytes[26:30] = struct.pack('<f', data["RFoot_x"])
-    data_bytes[30:34] = struct.pack('<f', data["RFoot_y"])
+    data_bytes[18:22] = struct.pack('<f', data["LFoot_x"])  #4
+    data_bytes[22:26] = struct.pack('<f', data["LFoot_y"])  #5
+    data_bytes[26:30] = struct.pack('<f', data["RFoot_x"])  #6
+    data_bytes[30:34] = struct.pack('<f', data["RFoot_y"])  #7
 
-    data_bytes[34:38] = struct.pack('<f', data["LFootCOP_x"])
-    data_bytes[38:42] = struct.pack('<f', data["LFootCOP_y"])
-    data_bytes[42:46] = struct.pack('<f', data["RFootCOP_x"])
-    data_bytes[46:50] = struct.pack('<f', data["RFootCOP_y"])
+    data_bytes[34:38] = struct.pack('<f', data["LFootCOP_x"])  #8
+    data_bytes[38:42] = struct.pack('<f', data["LFootCOP_y"])  #9
+    data_bytes[42:46] = struct.pack('<f', data["RFootCOP_x"])  #10
+    data_bytes[46:50] = struct.pack('<f', data["RFootCOP_y"])  #11
 
-    data_bytes[50:54] = struct.pack('<f', data["LFootCOP_value"])
-    data_bytes[54:58] = struct.pack('<f', data["LFootCOP_vector_x"])
-    data_bytes[58:62] = struct.pack('<f', data["LFootCOP_vector_y"])
-    data_bytes[62:66] = struct.pack('<f', data["RFootCOP_value"])
-    data_bytes[66:70] = struct.pack('<f', data["RFootCOP_vector_x"])
-    data_bytes[70:74] = struct.pack('<f', data["RFootCOP_vector_y"])
+    data_bytes[50:54] = struct.pack('<f', data["LFootCOP_value"])  #12
+    data_bytes[54:58] = struct.pack('<f', data["LFootCOP_vector_x"])  #13
+    data_bytes[58:62] = struct.pack('<f', data["LFootCOP_vector_y"])  #14
+    data_bytes[62:66] = struct.pack('<f', data["RFootCOP_value"])  #15
+    data_bytes[66:70] = struct.pack('<f', data["RFootCOP_vector_x"])  #16
+    data_bytes[70:74] = struct.pack('<f', data["RFootCOP_vector_y"])  #17
 
-    data_bytes[74:78] = struct.pack('<f', data["LFoot_time_travel"])
-    data_bytes[78:82] = struct.pack('<f', data["RFoot_time_travel"])
+    data_bytes[74:78] = struct.pack('<f', data["LFoot_time_travel"])  #18
+    data_bytes[78:82] = struct.pack('<f', data["RFoot_time_travel"])  #19
 
     # starting_point_index = 14
     # for i in range(3,9):
@@ -79,10 +79,10 @@ info_dict = {
     "RFootCOP_x": 0.0,
     "RFootCOP_y": 0.0,
     # COP Info
-    "LFootCOP_value": 0,
+    "LFootCOP_value": 30.0,
     "LFootCOP_vector_x": 0.0,
     "LFootCOP_vector_y": 0.0,
-    "RFootCOP_value": 0,
+    "RFootCOP_value": 30.0,
     "RFootCOP_vector_x": 0.0,
     "RFootCOP_vector_y": 0.0,
 }
@@ -124,7 +124,7 @@ def feetsPositionUpdate():
     for i in range(100):
         # test_data = [battery, w, c, x,y,pressure,x2,y2,pressure2]
         send_data(SERVER_IP, SERVER_PORT, info_dict)
-        time.sleep(5)
+        time.sleep(1)
         if i%2 == 0:
             # Foot in the air
             info_dict["LFoot_x"] += 100
@@ -133,7 +133,7 @@ def feetsPositionUpdate():
             # Foot in the ground
             info_dict["RFootCOP_x"] = random.randint(-85, 235)
             info_dict["RFootCOP_y"] = random.randint(-80, 80)
-            info_dict["RFootCOP_value"] = 5
+            info_dict["RFootCOP_value"] = random.randint(10, 30)
         else:
             # Foot in the air
             info_dict["RFoot_x"] += 100
@@ -142,7 +142,7 @@ def feetsPositionUpdate():
             # Foot in the ground
             info_dict["LFootCOP_x"] = random.randint(-85, 235)
             info_dict["LFootCOP_y"] = random.randint(-80, 80)
-            info_dict["LFootCOP_value"] = 5
+            info_dict["LFootCOP_value"] = random.randint(10, 30)
 
         print(info_dict)
 
