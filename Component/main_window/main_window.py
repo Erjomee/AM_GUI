@@ -7,6 +7,7 @@ from PyQt5.QtCore import *
 
 from views.QtWidgets.FootWidget2 import FootWidget2
 from views.QtWidgets.Object.PressurePoint import PressurePoint
+from views.QtWidgets.Object.Vector import Vector
 from views.QtWidgets.FootWidget import FootWidget
 from server.dummy_server import Server
 from views.QtWidgets.widget_3dplot import Widget3DPlot
@@ -34,7 +35,7 @@ class MainWindow(QtWidgets.QTabWidget):
 
 
     def initUI(self):
-        self.foot_widget = FootWidget2(self)
+        self.foot_widget = FootWidget(self)
         central_widget = self.findChild(QtWidgets.QWidget, "animation_widget")
         layout = QtWidgets.QVBoxLayout(central_widget)
         # Create the plot widget
@@ -70,8 +71,8 @@ class MainWindow(QtWidgets.QTabWidget):
 
 
         # Update foot pressure points
-        LeftFootPressurePoints = [PressurePoint(data[8],data[9],data[12])]
-        RightFootPressurePoints = [PressurePoint(data[10],data[11],data[15])]
+        LeftFootPressurePoints = [PressurePoint(data[8],data[9],data[12],vector=Vector(data[13], data[14]))]
+        RightFootPressurePoints = [PressurePoint(data[10],data[11],data[15],vector=Vector(data[16], data[17]))]
 
         self.foot_widget.update_pixmap(LeftFootPressurePoints,RightFootPressurePoints)
 
