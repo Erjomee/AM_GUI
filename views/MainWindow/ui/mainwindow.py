@@ -15,7 +15,7 @@ class Ui_TabWidget(object):
     def setupUi(self, TabWidget):
         TabWidget.setObjectName("TabWidget")
         TabWidget.setEnabled(True)
-        TabWidget.resize(1200, 800)
+        TabWidget.resize(600, 400)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -855,17 +855,17 @@ class Ui_TabWidget(object):
         self.verticalLayout_25.setStretch(1, 1)
         self.horizontalLayout_9.addWidget(self.widget_23)
         self.verticalLayout_18.addWidget(self.widget_11)
-        self.widget_16 = QtWidgets.QWidget(self.RightCol)
-        self.widget_16.setStyleSheet("QWidget{\n"
+        self.fault_detection_widget = QtWidgets.QWidget(self.RightCol)
+        self.fault_detection_widget.setStyleSheet("QWidget{\n"
 "background-color: rgb(255, 255, 255);\n"
 "border: 1px solid rgb(211, 211, 211);\n"
 "\n"
 "}")
-        self.widget_16.setObjectName("widget_16")
-        self.verticalLayout_21 = QtWidgets.QVBoxLayout(self.widget_16)
+        self.fault_detection_widget.setObjectName("fault_detection_widget")
+        self.verticalLayout_21 = QtWidgets.QVBoxLayout(self.fault_detection_widget)
         self.verticalLayout_21.setContentsMargins(10, 10, 10, 10)
         self.verticalLayout_21.setObjectName("verticalLayout_21")
-        self.label_29 = QtWidgets.QLabel(self.widget_16)
+        self.label_29 = QtWidgets.QLabel(self.fault_detection_widget)
         self.label_29.setStyleSheet("QLabel{\n"
 " border : none;\n"
 "    font: 16pt \"MS Shell Dlg 2\";\n"
@@ -874,68 +874,20 @@ class Ui_TabWidget(object):
 "}")
         self.label_29.setObjectName("label_29")
         self.verticalLayout_21.addWidget(self.label_29)
-        self.scrollArea = QtWidgets.QScrollArea(self.widget_16)
-        self.scrollArea.setStyleSheet("QScrollArea{\n"
-"border: 1px solid black\n"
-"}")
+        self.scrollArea = QtWidgets.QScrollArea(self.fault_detection_widget)
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 471, 390))
-        self.scrollAreaWidgetContents.setStyleSheet("QWidget{\n"
-"border: none}")
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 213, 132))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
-        self.verticalLayout_22 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
-        self.verticalLayout_22.setContentsMargins(0, 0, 0, 0)
-        self.verticalLayout_22.setSpacing(0)
-        self.verticalLayout_22.setObjectName("verticalLayout_22")
-        self.scrollArea_2 = QtWidgets.QScrollArea(self.scrollAreaWidgetContents)
-        self.scrollArea_2.setStyleSheet("QScrollArea{\n"
-"    color: white;\n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border: none\n"
-"\n"
-"\n"
-"}")
-        self.scrollArea_2.setWidgetResizable(True)
-        self.scrollArea_2.setObjectName("scrollArea_2")
-        self.scrollAreaWidgetContents_2 = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_2.setGeometry(QtCore.QRect(0, 0, 471, 390))
-        self.scrollAreaWidgetContents_2.setObjectName("scrollAreaWidgetContents_2")
-        self.verticalLayout_29 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_2)
-        self.verticalLayout_29.setObjectName("verticalLayout_29")
-        self.label_33 = QtWidgets.QLabel(self.scrollAreaWidgetContents_2)
-        self.label_33.setStyleSheet("QL    abel{\n"
-"    font: 8pt \"MS Shell Dlg 2\";\n"
-"\n"
-"}")
-        self.label_33.setObjectName("label_33")
-        self.verticalLayout_29.addWidget(self.label_33)
-        self.label_34 = QtWidgets.QLabel(self.scrollAreaWidgetContents_2)
-        self.label_34.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_34.setObjectName("label_34")
-        self.verticalLayout_29.addWidget(self.label_34)
-        self.label_35 = QtWidgets.QLabel(self.scrollAreaWidgetContents_2)
-        self.label_35.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_35.setObjectName("label_35")
-        self.verticalLayout_29.addWidget(self.label_35)
-        self.label_36 = QtWidgets.QLabel(self.scrollAreaWidgetContents_2)
-        self.label_36.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_36.setObjectName("label_36")
-        self.verticalLayout_29.addWidget(self.label_36)
-        self.label_37 = QtWidgets.QLabel(self.scrollAreaWidgetContents_2)
-        self.label_37.setText("")
-        self.label_37.setObjectName("label_37")
-        self.verticalLayout_29.addWidget(self.label_37)
-        self.verticalLayout_29.setStretch(0, 1)
-        self.verticalLayout_29.setStretch(1, 1)
-        self.verticalLayout_29.setStretch(2, 1)
-        self.verticalLayout_29.setStretch(3, 1)
-        self.scrollArea_2.setWidget(self.scrollAreaWidgetContents_2)
-        self.verticalLayout_22.addWidget(self.scrollArea_2)
+        self.horizontalLayout_8 = QtWidgets.QHBoxLayout(self.scrollAreaWidgetContents)
+        self.horizontalLayout_8.setObjectName("horizontalLayout_8")
+        self.label_27 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.label_27.setObjectName("label_27")
+        self.horizontalLayout_8.addWidget(self.label_27)
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.verticalLayout_21.addWidget(self.scrollArea)
-        self.verticalLayout_18.addWidget(self.widget_16)
+        self.verticalLayout_18.addWidget(self.fault_detection_widget)
         self.horizontalLayout_7 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_7.setSpacing(10)
         self.horizontalLayout_7.setObjectName("horizontalLayout_7")
@@ -1084,10 +1036,7 @@ class Ui_TabWidget(object):
         self.pushButton_7.setText(_translate("TabWidget", "PushButton"))
         self.label_32.setText(_translate("TabWidget", "TextLabel"))
         self.label_29.setText(_translate("TabWidget", "Fault Detection"))
-        self.label_33.setText(_translate("TabWidget", "Sensor fault 1: LH Inc Encoder error"))
-        self.label_34.setText(_translate("TabWidget", "."))
-        self.label_35.setText(_translate("TabWidget", "."))
-        self.label_36.setText(_translate("TabWidget", "."))
+        self.label_27.setText(_translate("TabWidget", "TextLabel"))
         self.pushButton_4.setText(_translate("TabWidget", "End data storage"))
         self.pushButton_3.setText(_translate("TabWidget", "Stamp"))
         TabWidget.setTabText(TabWidget.indexOf(self.RobotOperation), _translate("TabWidget", "Robot Operation"))

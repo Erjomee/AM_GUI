@@ -153,25 +153,23 @@ class FootWidget(QWidget):
                     if point.get_vector is not None and not is_permanent:
                         self.drawVector(x_pressure_point_coord + point.get_pressure,y_pressure_point_coord + point.get_pressure,point.get_vector,point.get_pressure)
             else:
+                # Changing opacity for the foot in the air
                 foot_pixmap_item.setOpacity(0.4)
-                self.foot_sensor(foot, activate=False)
+                self.foot_sensor(foot, activate=False) # Sensor Disabled
 
     def drawVector(self, x_start, y_start, vector, value):
-            # Calculate the end point of the arrow
-            end_x = x_start - vector.get_y
-            end_y = y_start - vector.get_x
+        # Calculate the end point of the arrow
+        end_x = x_start - vector.get_y
+        end_y = y_start - vector.get_x
 
-            # Draw Line of the vector base
-            line = QGraphicsLineItem(x_start, y_start, end_x, end_y)
-            line.setPen(QPen(QColor("black"), value*0.2, Qt.SolidLine, Qt.RoundCap, Qt.RoundJoin))
+        # Draw Line of the vector base
+        line = QGraphicsLineItem(x_start, y_start, end_x, end_y)
+        line.setPen(QPen(QColor("black"), value*0.2, Qt.SolidLine, Qt.RoundCap, Qt.RoundJoin))
 
-            # test = QGraphicsEllipseItem(x_start-10/2,y_start-10/2,10,10)
+        # Add the arrow to the scene
+        self.scene.addItem(line)
 
-            # Add the arrow to the scene
-            self.scene.addItem(line)
-            # self.scene.addItem(test)
-
-            self.drawArrowhead(QPointF(x_start, y_start), QPointF(end_x, end_y), QColor("black"), value * 0.2)
+        self.drawArrowhead(QPointF(x_start, y_start), QPointF(end_x, end_y), QColor("black"), value * 0.2)
 
     def drawArrowhead(self, start_point, end_point, color, width):
         # Calculate the angle of the line
