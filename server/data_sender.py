@@ -80,11 +80,11 @@ info_dict = {
     "RFootCOP_y": 0.0,
     # COP Info
     "LFootCOP_value": 30.0,
-    "LFootCOP_vector_x": 0.0,
-    "LFootCOP_vector_y": 0.0,
+    "LFootCOP_vector_x": 30.0,
+    "LFootCOP_vector_y": 30.0,
     "RFootCOP_value": 30.0,
-    "RFootCOP_vector_x": 0.0,
-    "RFootCOP_vector_y": 0.0,
+    "RFootCOP_vector_x": 30.0,
+    "RFootCOP_vector_y": -30.0,
 }
 
 
@@ -113,9 +113,9 @@ def temperatureUpdate():
         # test_data = [battery, w, c, x,y,pressure,x2,y2,pressure2]
         send_data(SERVER_IP, SERVER_PORT, info_dict)
         time.sleep(0.5)
-        info_dict["Temp1"] = float(random.randint(0, i))
-        info_dict["Temp2"] = float(random.randint(0, i))
-        info_dict["Temp3"] = float(random.randint(0, i))
+        info_dict["Temp1"] = float(random.randint(0, 200))
+        info_dict["Temp2"] = float(random.randint(0, 200))
+        info_dict["Temp3"] = float(random.randint(0, 200))
         print(info_dict)
 
 def feetsPositionUpdate():
