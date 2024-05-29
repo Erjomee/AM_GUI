@@ -1,6 +1,6 @@
 import sys
 from Component.start_window import StartWindow
-from Component.main_window import MainWindow
+from Component.main_window.main_window import MainWindow
 # from views.QtWidgets.exit_window import ExitWindow
 
 class AM_GUI():
@@ -16,7 +16,6 @@ class AM_GUI():
 
     def show_main_window(self):
         self.main_window = MainWindow()
-        
         # Starting server
         self.main_window.run_serv()
         # Showing Main Window

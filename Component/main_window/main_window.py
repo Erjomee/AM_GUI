@@ -1,16 +1,17 @@
 import threading
 import time
-import random
 
 from PyQt5 import QtWidgets, uic, QtCore
 from PyQt5.QtCore import *
 
-from views.QtWidgets.FootWidget2 import FootWidget2
-from views.QtWidgets.Object.PressurePoint import PressurePoint
-from views.QtWidgets.Object.Vector import Vector
-from views.QtWidgets.FootWidget import FootWidget
+from Component.main_window.Tabs.data_check import DataCheck
+from Component.main_window.Tabs.robot_operation import RobotOperation
+from Component.main_window.Tabs.turn_and_debug import TurnAndDebug
+from views.MainWindow.RobotOperation.Object.PressurePoint import PressurePoint
+from views.MainWindow.RobotOperation.Object.Vector import Vector
+from views.MainWindow.RobotOperation.FootWidget import FootWidget
 from server.dummy_server import Server
-from views.QtWidgets.widget_3dplot import Widget3DPlot
+from views.MainWindow.RobotOperation.widget_3dplot import Widget3DPlot
 
 SERVER_IP = "localhost"
 SERVER_PORT = 1818
@@ -25,14 +26,13 @@ class MainWindow(QtWidgets.QTabWidget):
         self.active_time = 0
         self.timer = QTimer()
         self.timer.timeout.connect(self.update_usage_time)
-        uic.loadUi('views/ui_object/mainwindow.ui', self)
+        uic.loadUi('views/MainWindow/ui/mainwindow.ui', self)
         self.server = Server(SERVER_IP, SERVER_PORT)
 
         self.initUI()
 
         self.ForceQuitButton = self.findChild(QtWidgets.QPushButton, "force_quit_button")
         self.ForceQuitButton.clicked.connect(self.closeEvent)
-
 
     def initUI(self):
         self.foot_widget = FootWidget(self)
@@ -41,7 +41,6 @@ class MainWindow(QtWidgets.QTabWidget):
         # Create the plot widget
         self.plot_widget = Widget3DPlot()
         layout.addWidget(self.plot_widget, 70)
-
 
     def run_serv(self):
         serverThreadServer = threading.Thread(target=self.server.start_server)
