@@ -24,23 +24,25 @@ def send_data(ip, port, data):
 
     data_bytes[18:22] = struct.pack('<f', data["LFoot_x"])  #4
     data_bytes[22:26] = struct.pack('<f', data["LFoot_y"])  #5
-    data_bytes[26:30] = struct.pack('<f', data["RFoot_x"])  #6
-    data_bytes[30:34] = struct.pack('<f', data["RFoot_y"])  #7
+    data_bytes[26:30] = struct.pack('<f', data["LFoot_z"])  #6
+    data_bytes[30:34] = struct.pack('<f', data["RFoot_x"])  #7
+    data_bytes[34:38] = struct.pack('<f', data["RFoot_y"])  #8
+    data_bytes[38:42] = struct.pack('<f', data["RFoot_z"])  #9
 
-    data_bytes[34:38] = struct.pack('<f', data["LFootCOP_x"])  #8
-    data_bytes[38:42] = struct.pack('<f', data["LFootCOP_y"])  #9
-    data_bytes[42:46] = struct.pack('<f', data["RFootCOP_x"])  #10
-    data_bytes[46:50] = struct.pack('<f', data["RFootCOP_y"])  #11
+    data_bytes[42:46] = struct.pack('<f', data["LFootCOP_x"])  #10
+    data_bytes[46:50] = struct.pack('<f', data["LFootCOP_y"])  #11
+    data_bytes[50:54] = struct.pack('<f', data["RFootCOP_x"])  #12
+    data_bytes[54:58] = struct.pack('<f', data["RFootCOP_y"])  #13
 
-    data_bytes[50:54] = struct.pack('<f', data["LFootCOP_value"])  #12
-    data_bytes[54:58] = struct.pack('<f', data["LFootCOP_vector_x"])  #13
-    data_bytes[58:62] = struct.pack('<f', data["LFootCOP_vector_y"])  #14
-    data_bytes[62:66] = struct.pack('<f', data["RFootCOP_value"])  #15
-    data_bytes[66:70] = struct.pack('<f', data["RFootCOP_vector_x"])  #16
-    data_bytes[70:74] = struct.pack('<f', data["RFootCOP_vector_y"])  #17
+    data_bytes[58:62] = struct.pack('<f', data["LFootCOP_value"])  #14
+    data_bytes[62:66] = struct.pack('<f', data["LFootCOP_vector_x"])  #15
+    data_bytes[66:70] = struct.pack('<f', data["LFootCOP_vector_y"])  #16
+    data_bytes[70:74] = struct.pack('<f', data["RFootCOP_value"])  #17
+    data_bytes[74:78] = struct.pack('<f', data["RFootCOP_vector_x"])  #18
+    data_bytes[78:82] = struct.pack('<f', data["RFootCOP_vector_y"])  #19
 
-    data_bytes[74:78] = struct.pack('<f', data["LFoot_time_travel"])  #18
-    data_bytes[78:82] = struct.pack('<f', data["RFoot_time_travel"])  #19
+    data_bytes[82:86] = struct.pack('<f', data["LFoot_time_travel"])  #20
+    data_bytes[86:90] = struct.pack('<f', data["RFoot_time_travel"])  #21
 
     # starting_point_index = 14
     # for i in range(3,9):
@@ -70,8 +72,10 @@ info_dict = {
     "LFoot_time_travel": 3,
     "LFoot_x": 0.0,
     "LFoot_y": 0.0,
+    "LFoot_z": 0.0,
     "RFoot_x": 0.0,
     "RFoot_y": 0.0,
+    "RFoot_z": 0.0,
     # COP coordinates
     "RFoot_time_travel": 3,
     "LFootCOP_x": 0.0,
@@ -125,10 +129,14 @@ def feetsPositionUpdate():
         # test_data = [battery, w, c, x,y,pressure,x2,y2,pressure2]
         send_data(SERVER_IP, SERVER_PORT, info_dict)
         time.sleep(1)
-        if i%2 == 0:
+        if i % 2 == 0:
             # Foot in the air
-            info_dict["LFoot_x"] += 100
-            info_dict["LFoot_y"] += 10
+            if i == 0:
+                #info_dict["LFoot_x"] += 100
+                info_dict["LFoot_y"] += 350
+            else:
+                #info_dict["LFoot_x"] += 200
+                info_dict["LFoot_y"] += 150
             info_dict["LFootCOP_value"] = 0
             # Foot in the ground
             info_dict["RFootCOP_x"] = random.randint(-85, 235)
@@ -136,29 +144,28 @@ def feetsPositionUpdate():
             info_dict["RFootCOP_value"] = random.randint(10, 30)
         else:
             # Foot in the air
-            info_dict["RFoot_x"] += 100
-            info_dict["RFoot_y"] += 10
+            #info_dict["RFoot_x"] += 600
+            info_dict["RFoot_y"] += 150
             info_dict["RFootCOP_value"] = 0
             # Foot in the ground
             info_dict["LFootCOP_x"] = random.randint(-85, 235)
             info_dict["LFootCOP_y"] = random.randint(-80, 80)
             info_dict["LFootCOP_value"] = random.randint(10, 30)
 
-        print(info_dict)
 
 time.sleep(2)
 
 # Create threads
-t1 = threading.Thread(target=batteryUpdate)
-t2 = threading.Thread(target=temperatureUpdate)
+#t1 = threading.Thread(target=batteryUpdate)
+#t2 = threading.Thread(target=temperatureUpdate)
 t3 = threading.Thread(target=feetsPositionUpdate)
 
 # Start threads
-t1.start()
-t2.start()
+#t1.start()
+#t2.start()
 t3.start()
 
 # Wait for both threads to finish
-t1.join()
-t2.join()
+#t1.join()
+#t2.join()
 t3.join()

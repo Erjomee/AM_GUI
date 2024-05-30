@@ -40,7 +40,7 @@ class Server(QObject):
                 if not received_data:
                     break
 
-                data = struct.unpack('<ifffffffffffffffffff', received_data[2:82])
+                data = struct.unpack('<ifffffffffffffffffffff', received_data[2:90])
                 self.newData.emit(list(data))
         finally:
             client_socket.close()
