@@ -70,10 +70,13 @@ class MainWindow(QtWidgets.QTabWidget):
 
 
         # Update foot pressure points
-        LeftFootPressurePoints = [PressurePoint(data[8],data[9],data[12])]
-        RightFootPressurePoints = [PressurePoint(data[10],data[11],data[15])]
+        LeftFootPressurePoints = [PressurePoint(data[10],data[11],data[14])]
+        RightFootPressurePoints = [PressurePoint(data[12],data[13],data[17])]
 
         self.foot_widget.update_pixmap(LeftFootPressurePoints,RightFootPressurePoints)
+
+        # Update the 3D plot
+        self.plot_widget.update_coords((data[4], data[5]), (data[7], data[8]))
 
         self.timer.start()
 
