@@ -1101,7 +1101,7 @@ border: none
 	
 }</string>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout_18" stretch="10,20,60,6">
+      <layout class="QVBoxLayout" name="verticalLayout_18" stretch="13,22,55,6">
        <property name="spacing">
         <number>15</number>
        </property>
@@ -1126,7 +1126,7 @@ border: 1px solid rgb(211, 211, 211)
 }</string>
             </property>
             <property name="text">
-             <string>Current State</string>
+             <string>현재 State 표시</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>

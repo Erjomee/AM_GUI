@@ -11,7 +11,9 @@ from server.dummy_server import Server
 SERVER_IP = "localhost"
 SERVER_PORT = 1818
 
+
 class MainWindow(QtWidgets.QTabWidget):
+    window_closed = pyqtSignal()
 
     def __init__(self):
         super(MainWindow, self).__init__()
@@ -20,13 +22,13 @@ class MainWindow(QtWidgets.QTabWidget):
 
         # Loading Main Window UI
         uic.loadUi('views/MainWindow/ui/mainwindow.ui', self)
-        self.server = Server(SERVER_IP, SERVER_PORT) # Launching server listener
+        self.server = Server(SERVER_IP, SERVER_PORT)  # Launching server listener
 
         # Loading all tabs of the Main Window
         self.robot_operation = RobotOperation(self)
         self.data_check = DataCheck(self)
         self.turn_and_debug = TurnAndDebug(self)
-        self.tabs = [self.robot_operation , self.data_check , self.turn_and_debug]
+        self.tabs = [self.robot_operation, self.data_check, self.turn_and_debug]
 
         # Click on quit button
         self.ForceQuitButton = self.findChild(QtWidgets.QPushButton, "force_quit_button")
@@ -43,6 +45,7 @@ class MainWindow(QtWidgets.QTabWidget):
         self.active = False
         self.server.stop_server()
         self.close()
+        self.window_closed.emit()  # Emit the signal before closing
 
     # Updating data in all tabs
     @pyqtSlot(list)

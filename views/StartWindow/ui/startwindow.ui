@@ -30,7 +30,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>../../assets/bionic-leg.png</normaloff>../../assets/bionic-leg.png</iconset>
+    <normaloff>../../../assets/bionic-leg.png</normaloff>../../../assets/bionic-leg.png</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">QPushButton {
