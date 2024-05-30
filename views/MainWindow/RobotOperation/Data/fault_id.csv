@@ -1,5 +1,17 @@
 id,label,description
-1,Sensor fault 1: Inc Encoder error,
-2,Fault 2,
-3,Fault 3,
-4,Fault 4,
+1,Sensor fault 1: Inc Encoder error,Critical
+2,Fault 2,Error
+3,Fault 3,Error
+4,Fault 4,Warning
+5,Fault 5,Critical
+6,Fault 6,Warning
+7,Fault 7,Warning
+8,Fault 8,Error
+9,Fault 9,Error
+10,Fault 10,Error
+11,Fault 11,Warning
+12,Fault 12,Critical
+13,Fault 13,Warning
+14,Fault 14,Warning
+15,Fault 15,Error
+16,Fault 16,Warning

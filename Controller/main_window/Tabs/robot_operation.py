@@ -67,4 +67,4 @@ class RobotOperation:
 
 
         ####################### Fault Detection Widget ########################
-        self.fault_detection_widget.update_fault_list([1,random.randint(1,4),random.randint(1,4),4] ,self.current_time)
+        self.fault_detection_widget.update_fault_list([random.randint(1,16) for _ in range(16)] + [1,3] ,self.current_time)
