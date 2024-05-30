@@ -110,7 +110,6 @@ class FootWidget(QWidget):
             self.clearItems(QGraphicsPolygonItem)
             self.LeftFootPressurePoints = LeftFootPressurePoints
             self.RightFootPressurePoints = LeftFootPressurePoints
-            self.init_sensor()
 
         ListOfFootsCoordsPressure = {"left_foot": LeftFootPressurePoints, "right_foot": RightFootPressurePoints}
 
@@ -156,6 +155,9 @@ class FootWidget(QWidget):
                 # Changing opacity for the foot in the air
                 foot_pixmap_item.setOpacity(0.4)
                 self.foot_sensor(foot, activate=False) # Sensor Disabled
+
+        if not is_permanent:
+            self.init_sensor()
 
     def drawVector(self, x_start, y_start, vector, value):
         # Calculate the end point of the arrow

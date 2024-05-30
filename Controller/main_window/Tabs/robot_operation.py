@@ -57,11 +57,15 @@ class RobotOperation:
         self.main_window.label_17.setText(f"{data[0]}% / {data[3]}˚C")
 
 
+        ####################### 3D Motion Widget ########################
+        self.plot_widget.update_coords((data[4],data[5]), (data[7],data[8]))
+
+
         ####################### Foot Widget ########################
 
         # Update foot pressure points
-        LeftFootPressurePoints = [PressurePoint(data[8],data[9],data[12],vector=Vector(data[13], data[14]))]
-        RightFootPressurePoints = [PressurePoint(data[10],data[11],data[15],vector=Vector(data[16], data[17]))]
+        LeftFootPressurePoints = [PressurePoint(data[10],data[11],data[14],vector=Vector(data[15], data[16]))]
+        RightFootPressurePoints = [PressurePoint(data[12],data[13],data[17],vector=Vector(data[18], data[19]))]
 
         self.foot_widget.update_pixmap(LeftFootPressurePoints,RightFootPressurePoints)
 

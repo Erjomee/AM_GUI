@@ -92,14 +92,6 @@ info_dict = {
 }
 
 
-x = random.randint(-85, 235)
-y = random.randint(-80, 80)
-pressure = 10
-
-x2 = random.randint(-85, 235)
-y2 = random.randint(-80, 80)
-pressure2 = 10
-
 def batteryUpdate():
     global info_dict
     for i in range(100):
@@ -107,12 +99,10 @@ def batteryUpdate():
         send_data(SERVER_IP, SERVER_PORT, info_dict)
         time.sleep(2)
         info_dict["Battery"] -= 1
-        print(info_dict)
 
 
 def temperatureUpdate():
     global info_dict
-
     for i in range(10000):
         # test_data = [battery, w, c, x,y,pressure,x2,y2,pressure2]
         send_data(SERVER_IP, SERVER_PORT, info_dict)
@@ -120,14 +110,12 @@ def temperatureUpdate():
         info_dict["Temp1"] = float(random.randint(0, 200))
         info_dict["Temp2"] = float(random.randint(0, 200))
         info_dict["Temp3"] = float(random.randint(0, 200))
-        print(info_dict)
 
 def feetsPositionUpdate():
     global info_dict
+    i = 2
 
-    for i in range(100):
-        # test_data = [battery, w, c, x,y,pressure,x2,y2,pressure2]
-        send_data(SERVER_IP, SERVER_PORT, info_dict)
+    for i in range(100000):
         time.sleep(1)
         if i % 2 == 0:
             # Foot in the air
@@ -152,20 +140,22 @@ def feetsPositionUpdate():
             info_dict["LFootCOP_y"] = random.randint(-80, 80)
             info_dict["LFootCOP_value"] = random.randint(10, 30)
 
+        send_data(SERVER_IP, SERVER_PORT, info_dict)
+
 
 time.sleep(2)
 
 # Create threads
-#t1 = threading.Thread(target=batteryUpdate)
-#t2 = threading.Thread(target=temperatureUpdate)
+t1 = threading.Thread(target=batteryUpdate)
+t2 = threading.Thread(target=temperatureUpdate)
 t3 = threading.Thread(target=feetsPositionUpdate)
 
-# Start threads
-#t1.start()
-#t2.start()
+# # Start threads
+t1.start()
+t2.start()
 t3.start()
 
 # Wait for both threads to finish
-#t1.join()
-#t2.join()
+t1.join()
+t2.join()
 t3.join()
