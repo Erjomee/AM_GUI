@@ -204,10 +204,34 @@ QWidget:hover{
           <property name="spacing">
            <number>4</number>
           </property>
+          <property name="sizeConstraint">
+           <enum>QLayout::SetDefaultConstraint</enum>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>6</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>6</number>
+          </property>
           <item>
            <widget class="QPushButton" name="force_quit_button">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="cursor">
              <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="layoutDirection">
+             <enum>Qt::LeftToRight</enum>
             </property>
             <property name="styleSheet">
              <string notr="true">
@@ -224,6 +248,15 @@ background-color : none
             </property>
             <property name="text">
              <string>Force Quit</string>
+            </property>
+            <property name="autoDefault">
+             <bool>false</bool>
+            </property>
+            <property name="default">
+             <bool>false</bool>
+            </property>
+            <property name="flat">
+             <bool>false</bool>
             </property>
            </widget>
           </item>
@@ -288,12 +321,12 @@ font: 8pt &quot;MS Shell Dlg 2&quot;;
             </property>
             <property name="styleSheet">
              <string notr="true">QProgressBar{
-font-weight: bold;
-
-}</string>
+	font-weight: bold;
+}
+</string>
             </property>
             <property name="value">
-             <number>0</number>
+             <number>100</number>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>

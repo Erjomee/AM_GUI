@@ -32,7 +32,6 @@ class MainWindow(QtWidgets.QTabWidget):
 
         # Click on quit button
         self.ForceQuitButton = self.findChild(QtWidgets.QPushButton, "force_quit_button")
-        self.ForceQuitButton.clicked.connect(self.closeEvent)
 
     # Starting the server and transmitting data
     def run_serv(self):
@@ -52,3 +51,6 @@ class MainWindow(QtWidgets.QTabWidget):
     def updateData(self, data):
         for tab in self.tabs:
             tab.update(data)
+
+
+
