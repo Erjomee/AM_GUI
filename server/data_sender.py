@@ -89,6 +89,36 @@ info_dict = {
     "RFootCOP_value": 30.0,
     "RFootCOP_vector_x": 30.0,
     "RFootCOP_vector_y": -30.0,
+
+    # Temperature
+    "LH_Abd_Temp": 0.0,
+    "LH_Rot_Temp": 0.0,
+    "LH_Flex_Temp": 0.0,
+    "LK_Temp": 0.0,
+    "LA_Lat_Temp": 0.0,
+    "LA_Med_Temp": 0.0,
+    
+    "RH_Abd_Temp": 0.0,
+    "RH_Rot_Temp": 0.0,
+    "RH_Flex_Temp": 0.0,
+    "RK_Temp": 0.0,
+    "RA_Lat_Temp": 0.0,
+    "RA_Med_Temp": 0.0,
+
+    # Amperage
+    "LH_Abd_Amp": 0.0,
+    "LH_Rot_Amp": 0.0,
+    "LH_Flex_Amp": 0.0,
+    "LK_Amp": 0.0,
+    "LA_Lat_Amp": 0.0,
+    "LA_Med_Amp": 0.0,
+
+    "RH_Abd_Amp": 0.0,
+    "RH_Rot_Amp": 0.0,
+    "RH_Flex_Amp": 0.0,
+    "RK_Amp": 0.0,
+    "RA_Lat_Amp": 0.0,
+    "RA_Med_Amp": 0.0,
 }
 
 
@@ -120,11 +150,11 @@ def feetsPositionUpdate():
         if i % 2 == 0:
             # Foot in the air
             if i == 0:
-                #info_dict["LFoot_x"] += 100
-                info_dict["LFoot_y"] += 350
+                info_dict["LFoot_x"] += 100
+                # info_dict["LFoot_y"] += 350
             else:
-                #info_dict["LFoot_x"] += 200
-                info_dict["LFoot_y"] += 150
+                info_dict["LFoot_x"] += 200
+                # info_dict["LFoot_y"] += 150
             info_dict["LFootCOP_value"] = 0
             # Foot in the ground
             info_dict["RFootCOP_x"] = random.randint(-85, 235)
@@ -132,8 +162,8 @@ def feetsPositionUpdate():
             info_dict["RFootCOP_value"] = random.randint(10, 30)
         else:
             # Foot in the air
-            #info_dict["RFoot_x"] += 600
-            info_dict["RFoot_y"] += 150
+            info_dict["RFoot_x"] += 200
+            # info_dict["RFoot_y"] += 150
             info_dict["RFootCOP_value"] = 0
             # Foot in the ground
             info_dict["LFootCOP_x"] = random.randint(-85, 235)

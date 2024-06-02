@@ -29,6 +29,7 @@ class AM_GUI:
 
         # Connect the close signal to show_exit_window
         self.main_window.window_closed.connect(self.show_exit_window)
+        self.main_window.ForceQuitButton.clicked.connect(self.quit_app)
 
     def show_exit_window(self):
         self.exit_window = ExitWindow()
@@ -40,5 +41,7 @@ class AM_GUI:
 
     def quit_app(self):
         self.is_running = False
-        self.server.stop_server()
+        self.main_window.server.stop_server()
         sys.exit(0)
+
+
