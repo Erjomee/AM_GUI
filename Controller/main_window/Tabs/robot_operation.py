@@ -1,5 +1,6 @@
 import random
 import time
+import pandas as pd
 
 from PyQt5 import QtWidgets
 from PyQt5.QtCore import QTimer
@@ -8,11 +9,11 @@ from datetime import datetime
 import os
 import csv
 
-from views.MainWindow.RobotOperation.FaultDetectionWidget import FaultDetectionWidget
-from views.MainWindow.RobotOperation.FootWidget import FootWidget
+from views.MainWindow.RobotOperation.Widget.FaultDetectionWidget import FaultDetectionWidget
+from views.MainWindow.RobotOperation.Widget.FootWidget import FootWidget
 from views.MainWindow.RobotOperation.Object.PressurePoint import PressurePoint
 from views.MainWindow.RobotOperation.Object.Vector import Vector
-from views.MainWindow.RobotOperation.widget_3dplot import Widget3DPlot
+from views.MainWindow.RobotOperation.Widget.widget_3dplot import Widget3DPlot
 
 
 class RobotOperation:
@@ -22,6 +23,7 @@ class RobotOperation:
 
         self.active_time = 0
         self.current_time = "00:00:00"
+        self.latest_time_insertion = ""
         self.timer = QTimer()
         self.timer.timeout.connect(self.update_usage_time)
 
@@ -43,34 +45,27 @@ class RobotOperation:
         self.RecordingButton.clicked.connect(self.handle_recording_button)
         self.csv_file_path = None
 
+        # Time Stamp
+        self.stamp_cpt = 0
+        self.lst_time_stamp = []
+        self.StampButton = self.main_window.findChild(QtWidgets.QPushButton, "stamp_button")
+        self.StampLCD = self.main_window.findChild(QtWidgets.QLCDNumber, "stamp_cpt")
+        self.StampButton.clicked.connect(self.handle_stamp_button)
+
+        # Time fault detection
+        self.lst_time_fault_detection = []
+
+
+    def handle_stamp_button(self):
+        self.stamp_cpt += 1
+        self.StampLCD.display(self.stamp_cpt)
+        self.lst_time_stamp.append(self.latest_time_insertion)
+
     def handle_recording_button(self):
         if self.on_record:  # End Recording
-            self.on_record = False
-
-            # Updating graphics
-            self.main_window.recording_button_container.setStyleSheet(
-                ''' QWidget{ background-color: blue;
-                        color: white;
-                        border: 1px solid black
-                    }
-                    QWidget:hover{
-                        background-color: rgb(0, 85, 255);
-                    }''')
-            self.RecordingButton.setText("Start data storage")
+            self.end_recording()
         else:  # Start Recording
             self.start_recording()
-            self.on_record = True
-
-            # Updating graphics
-            self.main_window.recording_button_container.setStyleSheet(
-                ''' QWidget{ background-color: rgb(130, 130, 130);
-                        color: black;
-                        border: 1px solid black
-                    }
-                    QWidget:hover{
-                        background-color: rgb(236, 78, 0);
-                    }''')
-            self.RecordingButton.setText("End data storage")
 
     def start_recording(self):
         date_time = datetime.now().strftime("%Y-%m-%d-%H_%M")
@@ -80,19 +75,63 @@ class RobotOperation:
         os.makedirs(folder_name, exist_ok=True)
 
         # Path to csv file base on the date and hour
-        self.csv_file_path = os.path.join(folder_name, f"{date_time}-{self.current_time.replace(':' , '_')[:-4]}.csv")
+        self.csv_file_path = os.path.join(folder_name, f"{date_time}-{self.current_time.replace(':', '_')[:-4]}.csv")
 
         # Writing the first row (header)
         with open(self.csv_file_path, 'w', newline='') as csvfile:
-            csvwriter = csv.writer(csvfile)
+            csvwriter = csv.writer(csvfile, delimiter=',')
             csvwriter.writerow(
-                ['Usage_time','Battery', 'Temp1', 'Temp2', 'Temp3', 'LFoot_x', 'LFoot_y', 'LFoot_z', 'RFoot_x', 'RFoot_y', 'RFoot_z',
+                ['Usage_time', 'Battery', 'Temp1', 'Temp2', 'Temp3', 'LFoot_x', 'LFoot_y', 'LFoot_z', 'RFoot_x',
+                 'RFoot_y', 'RFoot_z',
                  'LFootCOP_x', 'LFootCOP_y', 'RFootCOP_x', 'RFootCOP_y', 'LFootCOP_value', 'LFootCOP_vector_x',
                  'LFootCOP_vector_y', 'RFootCOP_value', 'RFootCOP_vector_x', 'RFootCOP_vector_y', 'LFoot_time_travel',
                  'RFoot_time_travel', 'LH_Abd_Temp', 'LH_Rot_Temp', 'LH_Flex_Temp', 'LK_Temp', 'LA_Lat_Temp',
                  'LA_Med_Temp', 'RH_Abd_Temp', 'RH_Rot_Temp', 'RH_Flex_Temp', 'RK_Temp', 'RA_Lat_Temp', 'RA_Med_Temp',
                  'LH_Abd_Amp', 'LH_Rot_Amp', 'LH_Flex_Amp', 'LK_Amp', 'LA_Lat_Amp', 'LA_Med_Amp', 'RH_Abd_Amp',
-                 'RH_Rot_Amp', 'RH_Flex_Amp', 'RK_Amp', 'RA_Lat_Amp', 'RA_Med_Amp'])
+                 'RH_Rot_Amp', 'RH_Flex_Amp', 'RK_Amp', 'RA_Lat_Amp', 'RA_Med_Amp', "Stamp"])
+
+        self.on_record = True
+
+        # Updating graphics
+        self.main_window.recording_button_container.setStyleSheet(
+            ''' QWidget{ background-color: rgb(130, 130, 130);
+                    color: black;
+                    border: 1px solid black
+                }
+                QWidget:hover{
+                    background-color: rgb(236, 78, 0);
+                }''')
+        self.RecordingButton.setText("End data storage")
+
+    def end_recording(self):
+        self.on_record = False
+
+        # Updating graphics
+        self.main_window.recording_button_container.setStyleSheet(
+            ''' QWidget{ background-color: blue;
+                    color: white;
+                    border: 1px solid black
+                }
+                QWidget:hover{
+                    background-color: rgb(0, 85, 255);
+                }''')
+        self.RecordingButton.setText("Start data storage")
+
+        # Adding time stamp into the csv
+        df = pd.read_csv(self.csv_file_path)
+        df["Stamp"] = df["Stamp"].astype(str)  # Convert the column to str
+
+        for time_stamp in self.lst_time_stamp:
+            df.loc[df["Usage_time"] == time_stamp, "Stamp"] = "True"
+
+        # TODO add fault detection time stamp
+
+        # Passing data to the data checker
+        self.main_window.data_check.update_data(df)
+
+        self.lst_time_stamp = []  # Reinitialize the list of time stamp
+        df.to_csv(self.csv_file_path, index=False)
+
 
     def update_usage_time(self):
         elapsed_time = time.time() - self.active_time
@@ -146,7 +185,7 @@ class RobotOperation:
         ####################### 3D Motion Widget ########################
         # self.plot_widget.update_coords((data[4], -185), (data[7], 185))
 
-        ####################### Foot Widget ########################
+        ########################## Foot Widget ###########################
 
         # Update foot pressure points
         LeftFootPressurePoints = [PressurePoint(data[10], data[11], data[14], vector=Vector(data[15], data[16]))]
@@ -158,11 +197,13 @@ class RobotOperation:
         self.fault_detection_widget.update_fault_list([random.randint(1, 16) for _ in range(16)] + [1, 3],
                                                       self.current_time)
 
-        ######################## Storing data ########################
+        ################## Storing data for Data Check Tab #####################
         if self.on_record:
             # Store new data received in the csv file
             with open(self.csv_file_path, 'a', newline='') as csvfile:
-                csvwriter = csv.writer(csvfile)
+                csvwriter = csv.writer(csvfile, delimiter=',')
                 tmp = data.copy()
-                tmp.insert(0, self.current_time)
+                time_received = self.current_time
+                tmp.insert(0, time_received)
                 csvwriter.writerow(tmp)
+                self.latest_time_insertion = time_received
