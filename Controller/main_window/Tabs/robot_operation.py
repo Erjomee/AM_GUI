@@ -43,23 +43,37 @@ class RobotOperation:
         self.on_record = False
         self.RecordingButton = self.main_window.findChild(QtWidgets.QPushButton, "recording_button")
         self.RecordingButton.clicked.connect(self.handle_recording_button)
-        self.csv_file_path = None
 
         # Time Stamp
         self.stamp_cpt = 0
-        self.lst_time_stamp = []
         self.StampButton = self.main_window.findChild(QtWidgets.QPushButton, "stamp_button")
         self.StampLCD = self.main_window.findChild(QtWidgets.QLCDNumber, "stamp_cpt")
         self.StampButton.clicked.connect(self.handle_stamp_button)
+        self.stamp_file_created = False
 
         # Time fault detection
         self.lst_time_fault_detection = []
+        self.fault_file_created = None
 
+        self.csv_data_file_path = None
+        self.csv_stamp_file_path = None
+        self.csv_fault_file_path = None
 
     def handle_stamp_button(self):
-        self.stamp_cpt += 1
-        self.StampLCD.display(self.stamp_cpt)
-        self.lst_time_stamp.append(self.latest_time_insertion)
+        # Verify that we are recording
+        if self.on_record:
+            self.stamp_cpt += 1  # Incrementing the counter
+            self.StampLCD.display(self.stamp_cpt)
+            if not self.stamp_file_created: # Creating the file if not exist
+                with open(self.csv_stamp_file_path, 'w', newline='') as csvfile:
+                    csvwriter = csv.writer(csvfile, delimiter=',')
+                    csvwriter.writerow(['Usage_time',"Stamp"])
+                self.stamp_file_created = True
+
+            # Marking time stamp in the csv file
+            with open(self.csv_stamp_file_path, 'a', newline='') as csvfile:
+                csvwriter = csv.writer(csvfile, delimiter=',')
+                csvwriter.writerow([self.latest_time_insertion , "True"])
 
     def handle_recording_button(self):
         if self.on_record:  # End Recording
@@ -71,14 +85,16 @@ class RobotOperation:
         date_time = datetime.now().strftime("%Y-%m-%d-%H_%M")
 
         # Create folder if not exist
-        folder_name = "views/MainWindow/RobotOperation/Data/recording"
+        folder_name = f"views/MainWindow/DataCheck/DataStorage/recording/{date_time}-{self.current_time.replace(':', '_')[:-4]}"
         os.makedirs(folder_name, exist_ok=True)
 
         # Path to csv file base on the date and hour
-        self.csv_file_path = os.path.join(folder_name, f"{date_time}-{self.current_time.replace(':', '_')[:-4]}.csv")
+        self.csv_data_file_path = os.path.join(folder_name, f"time_data.csv")
+        self.csv_stamp_file_path = os.path.join(folder_name, f"time_stamp.csv")
+        self.csv_fault_file_path = os.path.join(folder_name, f"time_fault.csv")
 
         # Writing the first row (header)
-        with open(self.csv_file_path, 'w', newline='') as csvfile:
+        with open(self.csv_data_file_path, 'w', newline='') as csvfile:
             csvwriter = csv.writer(csvfile, delimiter=',')
             csvwriter.writerow(
                 ['Usage_time', 'Battery', 'Temp1', 'Temp2', 'Temp3', 'LFoot_x', 'LFoot_y', 'LFoot_z', 'RFoot_x',
@@ -88,7 +104,7 @@ class RobotOperation:
                  'RFoot_time_travel', 'LH_Abd_Temp', 'LH_Rot_Temp', 'LH_Flex_Temp', 'LK_Temp', 'LA_Lat_Temp',
                  'LA_Med_Temp', 'RH_Abd_Temp', 'RH_Rot_Temp', 'RH_Flex_Temp', 'RK_Temp', 'RA_Lat_Temp', 'RA_Med_Temp',
                  'LH_Abd_Amp', 'LH_Rot_Amp', 'LH_Flex_Amp', 'LK_Amp', 'LA_Lat_Amp', 'LA_Med_Amp', 'RH_Abd_Amp',
-                 'RH_Rot_Amp', 'RH_Flex_Amp', 'RK_Amp', 'RA_Lat_Amp', 'RA_Med_Amp', "Stamp"])
+                 'RH_Rot_Amp', 'RH_Flex_Amp', 'RK_Amp', 'RA_Lat_Amp', 'RA_Med_Amp'])
 
         self.on_record = True
 
@@ -105,6 +121,9 @@ class RobotOperation:
 
     def end_recording(self):
         self.on_record = False
+        self.stamp_cpt = 0
+        self.stamp_file_created = False
+        self.fault_file_created = False
 
         # Updating graphics
         self.main_window.recording_button_container.setStyleSheet(
@@ -117,21 +136,8 @@ class RobotOperation:
                 }''')
         self.RecordingButton.setText("Start data storage")
 
-        # Adding time stamp into the csv
-        df = pd.read_csv(self.csv_file_path)
-        df["Stamp"] = df["Stamp"].astype(str)  # Convert the column to str
-
-        for time_stamp in self.lst_time_stamp:
-            df.loc[df["Usage_time"] == time_stamp, "Stamp"] = "True"
-
-        # TODO add fault detection time stamp
-
         # Passing data to the data checker
-        self.main_window.data_check.update_data(df)
-
-        self.lst_time_stamp = []  # Reinitialize the list of time stamp
-        df.to_csv(self.csv_file_path, index=False)
-
+        self.main_window.data_check.update_data(self.csv_data_file_path , self.csv_stamp_file_path , self.csv_fault_file_path)
 
     def update_usage_time(self):
         elapsed_time = time.time() - self.active_time
@@ -194,13 +200,14 @@ class RobotOperation:
         self.foot_widget.update_pixmap(LeftFootPressurePoints, RightFootPressurePoints)
 
         ######################## Fault Detection Widget ########################
-        self.fault_detection_widget.update_fault_list([random.randint(1, 16) for _ in range(16)] + [1, 3],
-                                                      self.current_time)
+        if random.randint(1,3) == 1 :
+            self.fault_detection_widget.update_fault_list([random.randint(1, 23) for _ in range(16)] + [1, 3],
+                                                          self.current_time)
 
         ################## Storing data for Data Check Tab #####################
         if self.on_record:
             # Store new data received in the csv file
-            with open(self.csv_file_path, 'a', newline='') as csvfile:
+            with open(self.csv_data_file_path, 'a', newline='') as csvfile:
                 csvwriter = csv.writer(csvfile, delimiter=',')
                 tmp = data.copy()
                 time_received = self.current_time

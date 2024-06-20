@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>600</width>
-    <height>447</height>
+    <height>400</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -75,7 +75,7 @@ QTabBar::tab:!selected:hover {
    <enum>QTabWidget::Rounded</enum>
   </property>
   <property name="currentIndex">
-   <number>0</number>
+   <number>1</number>
   </property>
   <property name="iconSize">
    <size>
@@ -1655,6 +1655,9 @@ border: none;
    </layout>
   </widget>
   <widget class="QWidget" name="DataCheck">
+   <property name="cursor">
+    <cursorShape>CrossCursor</cursorShape>
+   </property>
    <attribute name="title">
     <string>Data Check</string>
    </attribute>
@@ -1683,18 +1686,774 @@ border: none;
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>0</y>
-         <width>596</width>
-         <height>412</height>
+         <y>-3385</y>
+         <width>583</width>
+         <height>3750</height>
         </rect>
        </property>
-       <layout class="QVBoxLayout" name="verticalLayout_2">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>3750</height>
+        </size>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_2" stretch="1,0,0,7">
+        <property name="spacing">
+         <number>0</number>
+        </property>
+        <property name="leftMargin">
+         <number>30</number>
+        </property>
+        <property name="topMargin">
+         <number>30</number>
+        </property>
+        <property name="rightMargin">
+         <number>30</number>
+        </property>
+        <property name="bottomMargin">
+         <number>30</number>
+        </property>
         <item>
-         <widget class="QLabel" name="data_check_label">
-          <property name="text">
-           <string>fzafafaf</string>
+         <widget class="QWidget" name="widget_16" native="true">
+          <property name="styleSheet">
+           <string notr="true">QWidget{
+
+	background-color: rgb(85, 85, 255);
+}</string>
           </property>
          </widget>
+        </item>
+        <item>
+         <widget class="QSlider" name="horizontalSlider">
+          <property name="cursor">
+           <cursorShape>OpenHandCursor</cursorShape>
+          </property>
+          <property name="contextMenuPolicy">
+           <enum>Qt::NoContextMenu</enum>
+          </property>
+          <property name="acceptDrops">
+           <bool>false</bool>
+          </property>
+          <property name="toolTip">
+           <string>Set Time</string>
+          </property>
+          <property name="statusTip">
+           <string/>
+          </property>
+          <property name="accessibleName">
+           <string/>
+          </property>
+          <property name="accessibleDescription">
+           <string/>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="tickPosition">
+           <enum>QSlider::TicksAbove</enum>
+          </property>
+          <property name="tickInterval">
+           <number>5</number>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="verticalSpacer_11">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <layout class="QGridLayout" name="gridLayout_3">
+          <property name="horizontalSpacing">
+           <number>30</number>
+          </property>
+          <property name="verticalSpacing">
+           <number>0</number>
+          </property>
+          <item row="10" column="1">
+           <widget class="QWidget" name="RK_plot" native="true">
+            <property name="styleSheet">
+             <string notr="true">QWidget{
+	
+	background-color: rgb(255, 255, 255);
+
+}</string>
+            </property>
+           </widget>
+          </item>
+          <item row="13" column="1">
+           <widget class="QWidget" name="RA_Lat_plot" native="true">
+            <property name="styleSheet">
+             <string notr="true">QWidget{
+	
+	background-color: rgb(255, 255, 255);
+
+}</string>
+            </property>
+           </widget>
+          </item>
+          <item row="16" column="0">
+           <widget class="QWidget" name="LA_Med_plot" native="true">
+            <property name="styleSheet">
+             <string notr="true">QWidget{
+	
+	background-color: rgb(255, 255, 255);
+
+}</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <widget class="QWidget" name="LH_Rot_plot" native="true">
+            <property name="styleSheet">
+             <string notr="true">QWidget{
+	
+	background-color: rgb(255, 255, 255);
+
+}
+</string>
+            </property>
+           </widget>
+          </item>
+          <item row="16" column="1">
+           <widget class="QWidget" name="RA_Med_plot" native="true">
+            <property name="styleSheet">
+             <string notr="true">QWidget{
+	
+	background-color: rgb(255, 255, 255);
+
+}</string>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="0">
+           <widget class="QWidget" name="LH_Flex_plot" native="true">
+            <property name="styleSheet">
+             <string notr="true">QWidget{
+	
+	background-color: rgb(255, 255, 255);
+
+}
+</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <spacer name="verticalSpacer">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Fixed</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>1</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="15" column="0">
+           <widget class="QLabel" name="label_25">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>90</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel{
+	
+	font: 20pt &quot;MS Shell Dlg 2&quot;;
+	background-color: rgb(166, 166, 166);
+
+}</string>
+            </property>
+            <property name="text">
+             <string>LA_Med</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="15" column="1">
+           <widget class="QLabel" name="label_26">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>90</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel{
+	
+	font: 20pt &quot;MS Shell Dlg 2&quot;;
+	background-color: rgb(166, 166, 166);
+
+}</string>
+            </property>
+            <property name="text">
+             <string>RA_Med</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="8" column="0">
+           <spacer name="verticalSpacer_5">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Fixed</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="5" column="0">
+           <spacer name="verticalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Fixed</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="8" column="1">
+           <spacer name="verticalSpacer_6">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Fixed</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="5" column="1">
+           <spacer name="verticalSpacer_4">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Fixed</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="11" column="0">
+           <spacer name="verticalSpacer_7">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Fixed</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="11" column="1">
+           <spacer name="verticalSpacer_8">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Fixed</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="14" column="0">
+           <spacer name="verticalSpacer_9">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Fixed</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLabel" name="label_16">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>90</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel{
+	
+	font: 20pt &quot;MS Shell Dlg 2&quot;;
+	background-color: rgb(166, 166, 166);
+
+}</string>
+            </property>
+            <property name="text">
+             <string>RH_Abd</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_13">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>90</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel{
+	
+	font: 20pt &quot;MS Shell Dlg 2&quot;;
+	background-color: rgb(166, 166, 166);
+
+}</string>
+            </property>
+            <property name="text">
+             <string>LH_Abd</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <spacer name="verticalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Fixed</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="6" column="0">
+           <widget class="QLabel" name="label_19">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>90</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel{
+	
+	font: 20pt &quot;MS Shell Dlg 2&quot;;
+	background-color: rgb(166, 166, 166);
+
+}</string>
+            </property>
+            <property name="text">
+             <string>LH_Flex</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="9" column="1">
+           <widget class="QLabel" name="label_22">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>80</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel{
+	
+	font: 20pt &quot;MS Shell Dlg 2&quot;;
+	background-color: rgb(166, 166, 166);
+
+}</string>
+            </property>
+            <property name="text">
+             <string>RK</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="1">
+           <widget class="QLabel" name="label_20">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>90</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel{
+	
+	font: 20pt &quot;MS Shell Dlg 2&quot;;
+	background-color: rgb(166, 166, 166);
+
+}</string>
+            </property>
+            <property name="text">
+             <string>RH_Flex</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="9" column="0">
+           <widget class="QLabel" name="label_21">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>80</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel{
+	
+	font: 20pt &quot;MS Shell Dlg 2&quot;;
+	background-color: rgb(166, 166, 166);
+
+}</string>
+            </property>
+            <property name="text">
+             <string>LK</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="12" column="1">
+           <widget class="QLabel" name="label_24">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>80</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel{
+	
+	font: 20pt &quot;MS Shell Dlg 2&quot;;
+	background-color: rgb(166, 166, 166);
+
+}</string>
+            </property>
+            <property name="text">
+             <string>RA_Lat</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="12" column="0">
+           <widget class="QLabel" name="label_23">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>80</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel{
+	
+	font: 20pt &quot;MS Shell Dlg 2&quot;;
+	background-color: rgb(166, 166, 166);
+
+}</string>
+            </property>
+            <property name="text">
+             <string>LA_Lat</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QLabel" name="label_18">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>80</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel{
+	
+	font: 20pt &quot;MS Shell Dlg 2&quot;;
+	background-color: rgb(166, 166, 166);
+
+}</string>
+            </property>
+            <property name="text">
+             <string>RH_Rot</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QWidget" name="LH_Abd_plot" native="true">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;fzaffazf&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QWidget{
+	
+	background-color: rgb(255, 255, 255);
+
+}</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="label_17">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>80</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel{
+	
+	font: 20pt &quot;MS Shell Dlg 2&quot;;
+	background-color: rgb(166, 166, 166);
+
+}</string>
+            </property>
+            <property name="text">
+             <string>LH_Rot</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="13" column="0">
+           <widget class="QWidget" name="LA_Lat_plot" native="true">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QWidget{
+	
+	background-color: rgb(255, 255, 255);
+
+}</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QWidget" name="RH_Abd_plot" native="true">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QWidget{
+	
+	background-color: rgb(255, 255, 255);
+
+}</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QWidget" name="RH_Rot_plot" native="true">
+            <property name="styleSheet">
+             <string notr="true">QWidget{
+	
+	background-color: rgb(255, 255, 255);
+
+}</string>
+            </property>
+           </widget>
+          </item>
+          <item row="10" column="0">
+           <widget class="QWidget" name="LK_plot" native="true">
+            <property name="styleSheet">
+             <string notr="true">QWidget{
+	
+	background-color: rgb(255, 255, 255);
+
+}</string>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="1">
+           <widget class="QWidget" name="RH_Flex_plot" native="true">
+            <property name="styleSheet">
+             <string notr="true">QWidget{
+	
+	background-color: rgb(255, 255, 255);
+
+}</string>
+            </property>
+           </widget>
+          </item>
+          <item row="14" column="1">
+           <spacer name="verticalSpacer_10">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Fixed</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
         </item>
        </layout>
       </widget>

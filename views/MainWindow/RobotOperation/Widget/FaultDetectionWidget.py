@@ -34,7 +34,8 @@ class FaultDetectionWidget(QWidget):
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         layout.addWidget(self.scrollArea)
 
-        self.df = pd.read_csv("views/MainWindow/RobotOperation/Data/static/fault_id.csv")
+        self.df = pd.read_csv("views/MainWindow/RobotOperation/static/fault_id.csv")
+
 
         self.old_lst_fault_id = []
 
@@ -50,6 +51,9 @@ class FaultDetectionWidget(QWidget):
         faults_labels_to_add = [self.get_label(fault) for fault in fault_id_to_add]
         faults_description = [self.get_description(fault) for fault in fault_id_to_add]
         self.add_fault(faults_labels_to_add, faults_description, time)
+
+        # Update lst_time_fault_detection with current time for new faults
+        self.main_window.robot_operation.lst_time_fault_detection.extend([time] * len(fault_id_to_add))
 
         # Updating the new list of current fault
         self.old_lst_fault_id = new_lst_fault_id

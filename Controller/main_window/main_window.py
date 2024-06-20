@@ -11,6 +11,7 @@ from server.dummy_server import Server
 SERVER_IP = "localhost"
 SERVER_PORT = 1818
 
+
 class MainWindow(QtWidgets.QTabWidget):
     window_closed = pyqtSignal()
 
@@ -24,9 +25,10 @@ class MainWindow(QtWidgets.QTabWidget):
         self.server = Server(SERVER_IP, SERVER_PORT)  # Launching server listener
 
         # Loading all tabs of the Main Window
-        self.data_check = DataCheck(self)
         self.turn_and_debug = TurnAndDebug(self)
         self.robot_operation = RobotOperation(self)
+        self.data_check = DataCheck(self)
+
 
         self.tabs = [self.robot_operation, self.turn_and_debug]
 
@@ -51,6 +53,3 @@ class MainWindow(QtWidgets.QTabWidget):
     def updateData(self, data):
         for tab in self.tabs:
             tab.update(data)
-
-
-
