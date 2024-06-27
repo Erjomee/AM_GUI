@@ -12,7 +12,7 @@ class ExitWindow(QtWidgets.QDialog):
         self.active = True
         self.is_showed = False
 
-        uic.loadUi('views/ExitWindow/ui/exitwindow.ui', self)
+        uic.loadUi('views/ui/exitwindow.ui', self)
         self.setFixedSize(450, 300)  # Set fixed size
         #
         # Start a QTimer to close the window after 2 seconds

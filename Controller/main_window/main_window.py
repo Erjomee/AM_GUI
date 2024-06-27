@@ -21,7 +21,7 @@ class MainWindow(QtWidgets.QTabWidget):
         _translate = QtCore.QCoreApplication.translate
 
         # Loading Main Window UI
-        uic.loadUi('views/MainWindow/ui/mainwindow.ui', self)
+        uic.loadUi('views/ui/mainwindow.ui', self)
         self.server = Server(SERVER_IP, SERVER_PORT)  # Launching server listener
 
         # Loading all tabs of the Main Window

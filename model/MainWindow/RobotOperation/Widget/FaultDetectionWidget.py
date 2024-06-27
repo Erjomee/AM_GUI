@@ -34,7 +34,7 @@ class FaultDetectionWidget(QWidget):
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         layout.addWidget(self.scrollArea)
 
-        self.df = pd.read_csv("views/MainWindow/RobotOperation/static/fault_id.csv")
+        self.df = pd.read_csv("model/MainWindow/RobotOperation/static/fault_id.csv")
 
 
         self.old_lst_fault_id = []

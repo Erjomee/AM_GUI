@@ -1,6 +1,6 @@
 import pandas as pd
 
-from views.MainWindow.DataCheck.Widget.DriversPlotsWidgets import DriversPlotsWidgets
+from model.MainWindow.DataCheck.Widget.DriversPlotsWidgets import DriversPlotsWidgets
 
 class DataCheck:
     def __init__(self, main_window):

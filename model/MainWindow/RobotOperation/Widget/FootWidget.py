@@ -6,7 +6,7 @@ from PyQt5.QtWidgets import QWidget, QGraphicsScene, \
     QGraphicsPixmapItem, QGraphicsView, QGraphicsEllipseItem, QGraphicsLineItem, QGraphicsPolygonItem
 from PyQt5.QtCore import Qt, QRectF, QPointF
 
-from views.MainWindow.RobotOperation.Object.PressurePoint import PressurePoint
+from model.MainWindow.RobotOperation.Object.PressurePoint import PressurePoint
 
 
 class FootWidget(QWidget):

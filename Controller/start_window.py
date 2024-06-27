@@ -8,7 +8,7 @@ class StartWindow(QtWidgets.QDialog):
         self.active = True
         self.is_showed = False
 
-        uic.loadUi('views/StartWindow/ui/startwindow.ui', self)
+        uic.loadUi('views/ui/startwindow.ui', self)
         self.setFixedSize(450, 300)  # Set fixed size
 
         # Listener on startBTN

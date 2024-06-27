@@ -9,11 +9,11 @@ from datetime import datetime
 import os
 import csv
 
-from views.MainWindow.RobotOperation.Widget.FaultDetectionWidget import FaultDetectionWidget
-from views.MainWindow.RobotOperation.Widget.FootWidget import FootWidget
-from views.MainWindow.RobotOperation.Object.PressurePoint import PressurePoint
-from views.MainWindow.RobotOperation.Object.Vector import Vector
-from views.MainWindow.RobotOperation.Widget.widget_3dplot import Widget3DPlot
+from model.MainWindow.RobotOperation.Widget.FaultDetectionWidget import FaultDetectionWidget
+from model.MainWindow.RobotOperation.Widget.FootWidget import FootWidget
+from model.MainWindow.RobotOperation.Object.PressurePoint import PressurePoint
+from model.MainWindow.RobotOperation.Object.Vector import Vector
+from model.MainWindow.RobotOperation.Widget.widget_3dplot import Widget3DPlot
 
 
 class RobotOperation:
@@ -85,7 +85,7 @@ class RobotOperation:
         date_time = datetime.now().strftime("%Y-%m-%d-%H_%M")
 
         # Create folder if not exist
-        folder_name = f"views/MainWindow/DataCheck/DataStorage/recording/{date_time}-{self.current_time.replace(':', '_')[:-4]}"
+        folder_name = f"model/MainWindow/DataCheck/DataStorage/recording/{date_time}-{self.current_time.replace(':', '_')[:-4]}"
         os.makedirs(folder_name, exist_ok=True)
 
         # Path to csv file base on the date and hour
