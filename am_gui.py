@@ -1,6 +1,6 @@
 import sys
 from Controller.start_window import StartWindow
-from Controller.main_window import MainWindow
+from Controller.main_window.main_window import MainWindow
 # from views.QtWidgets.exit_window import ExitWindow
 
 class AM_GUI():

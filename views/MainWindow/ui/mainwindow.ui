@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>600</width>
-    <height>400</height>
+    <width>764</width>
+    <height>509</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -33,7 +33,7 @@
    </font>
   </property>
   <property name="cursor">
-   <cursorShape>PointingHandCursor</cursorShape>
+   <cursorShape>ArrowCursor</cursorShape>
   </property>
   <property name="windowTitle">
    <string>AM - GUI</string>
@@ -75,7 +75,7 @@ QTabBar::tab:!selected:hover {
    <enum>QTabWidget::Rounded</enum>
   </property>
   <property name="currentIndex">
-   <number>0</number>
+   <number>3</number>
   </property>
   <property name="iconSize">
    <size>
@@ -1065,13 +1065,11 @@ QWidget:hover{
            <widget class="QPushButton" name="pushButton_2">
             <property name="styleSheet">
              <string notr="true">QPushButton{
- color: white;
- border : none;
+ 	color: white;
+ 	border : none;
 	font: 12pt &quot;MS Shell Dlg 2&quot;;
-font-weight: bold;
-background-color : none
-
-
+	font-weight: bold;
+	background-color : none
 }</string>
             </property>
             <property name="text">
@@ -1435,8 +1433,8 @@ border: 1px solid black
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>213</width>
-               <height>132</height>
+               <width>310</width>
+               <height>164</height>
               </rect>
              </property>
              <property name="styleSheet">
@@ -1478,8 +1476,8 @@ border: none}</string>
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>213</width>
-                   <height>132</height>
+                   <width>310</width>
+                   <height>164</height>
                   </rect>
                  </property>
                  <layout class="QVBoxLayout" name="verticalLayout_29" stretch="1,1,1,1,0">
@@ -1637,6 +1635,30 @@ background-color: none
     </item>
    </layout>
   </widget>
+  <widget class="QWidget" name="DataCheck">
+   <attribute name="title">
+    <string>Data Check</string>
+   </attribute>
+   <layout class="QHBoxLayout" name="horizontalLayout_11">
+    <item>
+     <widget class="QLabel" name="label_39">
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+
+font-size: 32px
+
+}</string>
+      </property>
+      <property name="text">
+       <string>Page 3</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
   <widget class="QWidget" name="TurnandDebug">
    <attribute name="title">
     <string>Turn and Debug</string>
@@ -1668,34 +1690,170 @@ font-size: 32px
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="DataCheck">
-   <attribute name="title">
-    <string>Data Check</string>
-   </attribute>
-   <layout class="QHBoxLayout" name="horizontalLayout_11">
-    <item>
-     <widget class="QLabel" name="label_39">
-      <property name="styleSheet">
-       <string notr="true">QLabel{
-
-font-size: 32px
-
-}</string>
-      </property>
-      <property name="text">
-       <string>Page 3</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QWidget" name="tab">
+  <widget class="QWidget" name="Exit">
+   <property name="styleSheet">
+    <string notr="true">font-size:17px;</string>
+   </property>
    <attribute name="title">
     <string>Exit</string>
    </attribute>
+   <layout class="QVBoxLayout" name="verticalLayout_32">
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_2" stretch="3,1,1,1,2,8">
+      <property name="spacing">
+       <number>-1</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="label_27">
+        <property name="styleSheet">
+         <string notr="true">font-size:25pt;</string>
+        </property>
+        <property name="text">
+         <string>Summary of usage history</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_42">
+        <property name="styleSheet">
+         <string notr="true">QLabel {
+	font:20pt;
+}</string>
+        </property>
+        <property name="text">
+         <string>Total usage time: </string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_41">
+        <property name="styleSheet">
+         <string notr="true">QLabel {
+	font:20pt;
+}</string>
+        </property>
+        <property name="text">
+         <string>Variety of Actions: </string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_40">
+        <property name="styleSheet">
+         <string notr="true">QLabel {
+	font:20pt;
+}</string>
+        </property>
+        <property name="text">
+         <string>Number of errors: </string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_43">
+        <property name="styleSheet">
+         <string notr="true">QLabel {
+	font:20pt;
+}</string>
+        </property>
+        <property name="text">
+         <string>Leave a follow-up note</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QTextEdit" name="textEdit">
+        <property name="minimumSize">
+         <size>
+          <width>100</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>1000</height>
+         </size>
+        </property>
+        <property name="cursor" stdset="0">
+         <cursorShape>IBeamCursor</cursorShape>
+        </property>
+        <property name="lineWrapMode">
+         <enum>QTextEdit::WidgetWidth</enum>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_13" stretch="0,1">
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>500</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="force_quit_button_3">
+        <property name="minimumSize">
+         <size>
+          <width>250</width>
+          <height>35</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>450</width>
+          <height>100</height>
+         </size>
+        </property>
+        <property name="baseSize">
+         <size>
+          <width>0</width>
+          <height>5004</height>
+         </size>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+	 color: white;
+ 	border : none;
+	font: 12pt &quot;MS Shell Dlg 2&quot;;
+	font-weight: bold;
+	background-color : none
+}
+
+QWidget{
+ background-color: blue;
+border: 1px solid black
+}
+
+QWidget:hover{
+  cursor: pointer;
+	background-color: rgb(0, 85, 255);
+}
+</string>
+        </property>
+        <property name="text">
+         <string>Force Quit</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources/>
