@@ -5,7 +5,7 @@ from matplotlib.figure import Figure
 from PyQt5.QtWidgets import (QApplication, QVBoxLayout, QWidget)
 from mpl_toolkits.mplot3d.art3d import Line3D
 
-from utils import get_xyz_of_points, calculate_angle
+from views.MainWindow.RobotOperation.Utils.functionFor3D import get_xyz_of_points
 
 
 class Widget3DPlot(QWidget):
