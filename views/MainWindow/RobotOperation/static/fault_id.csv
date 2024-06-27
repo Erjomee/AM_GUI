@@ -1,0 +1,24 @@
+id,label,description
+1,• Battery over-discharge,Critical
+2,• Battery under-voltage,Error
+3,• MD – communication issue,Error
+4,• AM – communication issue,Warning
+5,• GRF – communication issue,Critical
+6,• (COM support polygon out),Warning
+7,• (Weight loading out of stance foot),Warning
+8,• RT breakage,Error
+9,• IMU_CM issue,Error
+10,• GRF sensor issue [2],Error
+11,• RT breakage [2],Warning
+12,• IMU issue [2],Critical
+13,• Output deficiency [12],Warning
+14,• ROM limit arrival [12],Warning
+15,• Actuator over-temperature [12],Error
+16,• RT breakage [12],Warning
+17,• Control error limit arrival [12],Warning
+18,• Main power off [12],Warning
+19,• Incremental encoder issue [12],Error
+20,• Absolute encoder issue [12],Error
+21,• Temperature sensor issue [12],Warning
+22,• Hall sensor issue [12],Warning
+23,• Board over-temperature [12],Warning
