@@ -75,7 +75,7 @@ QTabBar::tab:!selected:hover {
    <enum>QTabWidget::Rounded</enum>
   </property>
   <property name="currentIndex">
-   <number>1</number>
+   <number>3</number>
   </property>
   <property name="iconSize">
    <size>
@@ -2496,10 +2496,220 @@ font-size: 32px
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="tab">
+  <widget class="QWidget" name="Exit">
    <attribute name="title">
     <string>Exit</string>
    </attribute>
+   <layout class="QVBoxLayout" name="verticalLayout_19">
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_7" stretch="3,1,1,1,0,1,5,0,2">
+      <property name="spacing">
+       <number>5</number>
+      </property>
+      <property name="leftMargin">
+       <number>10</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>10</number>
+      </property>
+      <property name="bottomMargin">
+       <number>30</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="label_27">
+        <property name="styleSheet">
+         <string notr="true">font-size:23pt;</string>
+        </property>
+        <property name="text">
+         <string>Summary of usage history</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_42">
+        <property name="styleSheet">
+         <string notr="true">QLabel {
+	font:16pt;
+}</string>
+        </property>
+        <property name="text">
+         <string>Total usage time: </string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_41">
+        <property name="styleSheet">
+         <string notr="true">QLabel {
+	font:16pt;
+}</string>
+        </property>
+        <property name="text">
+         <string>Variety of Actions: </string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_40">
+        <property name="styleSheet">
+         <string notr="true">QLabel {
+	font:16pt;
+}</string>
+        </property>
+        <property name="text">
+         <string>Number of errors: </string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="verticalSpacer_13">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>50</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_43">
+        <property name="styleSheet">
+         <string notr="true">QLabel {
+	font:16pt;
+}</string>
+        </property>
+        <property name="text">
+         <string>Leave a follow-up note</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QTextEdit" name="textEdit">
+        <property name="minimumSize">
+         <size>
+          <width>100</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>1000</height>
+         </size>
+        </property>
+        <property name="cursor" stdset="0">
+         <cursorShape>IBeamCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QTextEdit{
+	
+	font: 13pt &quot;MS Shell Dlg 2&quot;;
+}</string>
+        </property>
+        <property name="lineWrapMode">
+         <enum>QTextEdit::WidgetWidth</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="verticalSpacer_12">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>30</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_13" stretch="0,1">
+        <property name="spacing">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>500</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QPushButton" name="force_quit_button_3">
+          <property name="minimumSize">
+           <size>
+            <width>250</width>
+            <height>35</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>450</width>
+            <height>100</height>
+           </size>
+          </property>
+          <property name="baseSize">
+           <size>
+            <width>0</width>
+            <height>5004</height>
+           </size>
+          </property>
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton{
+	 color: white;
+ 	border : none;
+	font: 12pt &quot;MS Shell Dlg 2&quot;;
+	font-weight: bold;
+	background-color : none
+}
+
+QWidget{
+ background-color: blue;
+border: 1px solid black
+}
+
+QWidget:hover{
+  cursor: pointer;
+	background-color: rgb(0, 85, 255);
+}
+</string>
+          </property>
+          <property name="text">
+           <string>Save and Quit</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources/>
