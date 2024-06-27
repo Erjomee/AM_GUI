@@ -16,12 +16,17 @@ class Ui_TabWidget(object):
         TabWidget.setObjectName("TabWidget")
         TabWidget.setEnabled(True)
         TabWidget.resize(600, 400)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(TabWidget.sizePolicy().hasHeightForWidth())
         TabWidget.setSizePolicy(sizePolicy)
         TabWidget.setMinimumSize(QtCore.QSize(600, 400))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        TabWidget.setFont(font)
         TabWidget.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("../../../assets/bionic-leg.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -74,72 +79,34 @@ class Ui_TabWidget(object):
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.RobotOperation)
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.LeftCol = QtWidgets.QWidget(self.RobotOperation)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.LeftCol.sizePolicy().hasHeightForWidth())
+        self.LeftCol.setSizePolicy(sizePolicy)
         self.LeftCol.setStyleSheet("QWidget{\n"
 " background-color: none;\n"
 "border: none\n"
 "}")
         self.LeftCol.setObjectName("LeftCol")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.LeftCol)
+        self.verticalLayout.setContentsMargins(-1, 10, -1, -1)
         self.verticalLayout.setSpacing(15)
         self.verticalLayout.setObjectName("verticalLayout")
-        self.animatio_widget = QtWidgets.QWidget(self.LeftCol)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Preferred)
+        self.animation_widget = QtWidgets.QWidget(self.LeftCol)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.animatio_widget.sizePolicy().hasHeightForWidth())
-        self.animatio_widget.setSizePolicy(sizePolicy)
-        self.animatio_widget.setStyleSheet("QWidget{\n"
+        sizePolicy.setHeightForWidth(self.animation_widget.sizePolicy().hasHeightForWidth())
+        self.animation_widget.setSizePolicy(sizePolicy)
+        self.animation_widget.setStyleSheet("QWidget{\n"
 "background-color: rgb(255, 255, 255);\n"
-"border: 1px solid rgb(211, 211, 211)\n"
-"\n"
+"border: 1px solid rgb(211, 211, 211);\n"
 "}")
-        self.animatio_widget.setObjectName("animatio_widget")
-        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.animatio_widget)
-        self.verticalLayout_2.setSpacing(0)
-        self.verticalLayout_2.setObjectName("verticalLayout_2")
-        self.SagittalPlane = QtWidgets.QLabel(self.animatio_widget)
-        self.SagittalPlane.setStyleSheet("QLabel{\n"
-"    border: none;\n"
-"   background-color: rgb(230, 230, 230);\n"
-"   padding-left: 5px\n"
-"\n"
-"}")
-        self.SagittalPlane.setObjectName("SagittalPlane")
-        self.verticalLayout_2.addWidget(self.SagittalPlane)
-        self.FrontalPlane = QtWidgets.QLabel(self.animatio_widget)
-        self.FrontalPlane.setStyleSheet("QLabel{\n"
-"\n"
-"border: none\n"
-"}")
-        self.FrontalPlane.setText("")
-        self.FrontalPlane.setObjectName("FrontalPlane")
-        self.verticalLayout_2.addWidget(self.FrontalPlane)
-        self.animation_walking1 = QtWidgets.QLabel(self.animatio_widget)
-        self.animation_walking1.setStyleSheet("QLabel{\n"
-"    border: none;\n"
-"   background-color: rgb(230, 230, 230);\n"
-"   padding-left: 5px\n"
-"\n"
-"\n"
-"}")
-        self.animation_walking1.setObjectName("animation_walking1")
-        self.verticalLayout_2.addWidget(self.animation_walking1)
-        self.animation_walking2 = QtWidgets.QLabel(self.animatio_widget)
-        self.animation_walking2.setStyleSheet("QLabel{\n"
-"\n"
-"border: none\n"
-"\n"
-"}")
-        self.animation_walking2.setText("")
-        self.animation_walking2.setObjectName("animation_walking2")
-        self.verticalLayout_2.addWidget(self.animation_walking2)
-        self.verticalLayout_2.setStretch(0, 1)
-        self.verticalLayout_2.setStretch(1, 3)
-        self.verticalLayout_2.setStretch(2, 1)
-        self.verticalLayout_2.setStretch(3, 3)
-        self.verticalLayout.addWidget(self.animatio_widget)
+        self.animation_widget.setObjectName("animation_widget")
+        self.verticalLayout.addWidget(self.animation_widget)
         self.foot_widget_1 = QtWidgets.QWidget(self.LeftCol)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Ignored, QtWidgets.QSizePolicy.Ignored)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.foot_widget_1.sizePolicy().hasHeightForWidth())
@@ -150,45 +117,63 @@ class Ui_TabWidget(object):
 "\n"
 "}")
         self.foot_widget_1.setObjectName("foot_widget_1")
-        self.horizontalLayout_8 = QtWidgets.QHBoxLayout(self.foot_widget_1)
-        self.horizontalLayout_8.setObjectName("horizontalLayout_8")
-        self.label_27 = QtWidgets.QLabel(self.foot_widget_1)
-        self.label_27.setObjectName("label_27")
-        self.horizontalLayout_8.addWidget(self.label_27)
         self.verticalLayout.addWidget(self.foot_widget_1)
-        self.button1 = QtWidgets.QWidget(self.LeftCol)
-        self.button1.setStyleSheet("QWidget{\n"
+        self.widget_27 = QtWidgets.QWidget(self.LeftCol)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.widget_27.sizePolicy().hasHeightForWidth())
+        self.widget_27.setSizePolicy(sizePolicy)
+        self.widget_27.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.widget_27.setStyleSheet("QWidget{\n"
 " background-color: blue;\n"
 "border: 1px solid black\n"
-"}")
-        self.button1.setObjectName("button1")
-        self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.button1)
+"}\n"
+"\n"
+"QWidget:hover{\n"
+"    background-color: rgb(0, 85, 255);\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"")
+        self.widget_27.setObjectName("widget_27")
+        self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.widget_27)
+        self.horizontalLayout_2.setSpacing(4)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        self.pushButton = QtWidgets.QPushButton(self.button1)
-        self.pushButton.setStyleSheet("QPushButton{\n"
+        self.force_quit_button = QtWidgets.QPushButton(self.widget_27)
+        self.force_quit_button.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.force_quit_button.setStyleSheet("\n"
+"\n"
+"QPushButton{\n"
 " color: white;\n"
 " border : none;\n"
 "    font: 12pt \"MS Shell Dlg 2\";\n"
 "font-weight: bold;\n"
-"\n"
+"background-color : none\n"
 "\n"
 "\n"
 "}")
-        self.pushButton.setObjectName("pushButton")
-        self.horizontalLayout_2.addWidget(self.pushButton)
-        self.verticalLayout.addWidget(self.button1)
-        self.verticalLayout.setStretch(0, 10)
-        self.verticalLayout.setStretch(1, 5)
+        self.force_quit_button.setObjectName("force_quit_button")
+        self.horizontalLayout_2.addWidget(self.force_quit_button)
+        self.verticalLayout.addWidget(self.widget_27)
+        self.verticalLayout.setStretch(0, 8)
+        self.verticalLayout.setStretch(1, 7)
         self.verticalLayout.setStretch(2, 1)
         self.horizontalLayout.addWidget(self.LeftCol)
         self.MiddleCol = QtWidgets.QWidget(self.RobotOperation)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.MiddleCol.sizePolicy().hasHeightForWidth())
+        self.MiddleCol.setSizePolicy(sizePolicy)
         self.MiddleCol.setStyleSheet("QWidget{\n"
 " background-color: none;\n"
 "border: none\n"
 "}")
         self.MiddleCol.setObjectName("MiddleCol")
         self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.MiddleCol)
-        self.verticalLayout_3.setSpacing(4)
+        self.verticalLayout_3.setSpacing(15)
         self.verticalLayout_3.setObjectName("verticalLayout_3")
         self.battery_widget = QtWidgets.QWidget(self.MiddleCol)
         self.battery_widget.setStyleSheet("QWidget{\n"
@@ -202,9 +187,12 @@ class Ui_TabWidget(object):
         self.battery_level = QtWidgets.QLabel(self.battery_widget)
         self.battery_level.setStyleSheet("QLabel{\n"
 "\n"
-"border: none\n"
+"border: none;\n"
+"font: 8pt \"MS Shell Dlg 2\";\n"
 "\n"
-"}")
+"}\n"
+"\n"
+"")
         self.battery_level.setObjectName("battery_level")
         self.horizontalLayout_4.addWidget(self.battery_level)
         self.progressBar = QtWidgets.QProgressBar(self.battery_widget)
@@ -236,9 +224,12 @@ class Ui_TabWidget(object):
         self.label_2 = QtWidgets.QLabel(self.time_widget)
         self.label_2.setStyleSheet("QLabel{\n"
 "\n"
-"border: none\n"
+"border: none;\n"
+"font: 8pt \"MS Shell Dlg 2\";\n"
 "\n"
-"}")
+"}\n"
+"\n"
+"")
         self.label_2.setObjectName("label_2")
         self.horizontalLayout_5.addWidget(self.label_2)
         self.label_usage_time = QtWidgets.QLabel(self.time_widget)
@@ -268,7 +259,7 @@ class Ui_TabWidget(object):
         self.label = QtWidgets.QLabel(self.driver_info_widget)
         self.label.setStyleSheet("QLabel{\n"
 "border:none;\n"
-"\n"
+"font: 7pt \"MS Shell Dlg 2\";\n"
 "\n"
 "\n"
 "}")
@@ -288,14 +279,20 @@ class Ui_TabWidget(object):
         self.verticalLayout_11.setSpacing(0)
         self.verticalLayout_11.setObjectName("verticalLayout_11")
         self.label_7 = QtWidgets.QLabel(self.widget_12)
+        self.label_7.setStyleSheet("QLabel{\n"
+"font: 8pt \"MS Shell Dlg 2\";\n"
+"}")
         self.label_7.setObjectName("label_7")
         self.verticalLayout_11.addWidget(self.label_7)
         self.label_20 = QtWidgets.QLabel(self.widget_12)
         self.label_20.setStyleSheet("QLabel{\n"
 "    border: none;\n"
-"   background-color: rgb(230, 230, 230);\n"
-" \n"
-" font-weight: bold;\n"
+"    background-color: rgb(230, 230, 230);\n"
+"    \n"
+"    font: 100 8pt \"MS Shell Dlg 2\";\n"
+"font-weight:bold\n"
+"    \n"
+"\n"
 "}")
         self.label_20.setAlignment(QtCore.Qt.AlignCenter)
         self.label_20.setObjectName("label_20")
@@ -311,14 +308,20 @@ class Ui_TabWidget(object):
         self.verticalLayout_15.setSpacing(0)
         self.verticalLayout_15.setObjectName("verticalLayout_15")
         self.label_12 = QtWidgets.QLabel(self.widget_14)
+        self.label_12.setStyleSheet("QLabel{\n"
+"font: 8pt \"MS Shell Dlg 2\";\n"
+"}")
         self.label_12.setObjectName("label_12")
         self.verticalLayout_15.addWidget(self.label_12)
         self.label_24 = QtWidgets.QLabel(self.widget_14)
         self.label_24.setStyleSheet("QLabel{\n"
 "    border: none;\n"
-"   background-color: rgb(230, 230, 230);\n"
+"    background-color: rgb(230, 230, 230);\n"
+"    \n"
+"    font: 100 8pt \"MS Shell Dlg 2\";\n"
+"font-weight:bold\n"
+"    \n"
 "\n"
-" font-weight: bold;\n"
 "}")
         self.label_24.setAlignment(QtCore.Qt.AlignCenter)
         self.label_24.setObjectName("label_24")
@@ -334,14 +337,20 @@ class Ui_TabWidget(object):
         self.verticalLayout_16.setSpacing(0)
         self.verticalLayout_16.setObjectName("verticalLayout_16")
         self.label_15 = QtWidgets.QLabel(self.widget_15)
+        self.label_15.setStyleSheet("QLabel{\n"
+"font: 8pt \"MS Shell Dlg 2\";\n"
+"}")
         self.label_15.setObjectName("label_15")
         self.verticalLayout_16.addWidget(self.label_15)
         self.label_26 = QtWidgets.QLabel(self.widget_15)
         self.label_26.setStyleSheet("QLabel{\n"
 "    border: none;\n"
-"   background-color: rgb(230, 230, 230);\n"
-" \n"
-" font-weight: bold;\n"
+"    background-color: rgb(230, 230, 230);\n"
+"    \n"
+"    font: 100 8pt \"MS Shell Dlg 2\";\n"
+"font-weight:bold\n"
+"    \n"
+"\n"
 "}")
         self.label_26.setAlignment(QtCore.Qt.AlignCenter)
         self.label_26.setObjectName("label_26")
@@ -357,14 +366,21 @@ class Ui_TabWidget(object):
         self.verticalLayout_13.setSpacing(0)
         self.verticalLayout_13.setObjectName("verticalLayout_13")
         self.label_10 = QtWidgets.QLabel(self.widget_13)
+        self.label_10.setStyleSheet("QLabel{\n"
+"font: 8pt \"MS Shell Dlg 2\";\n"
+"}\n"
+"")
         self.label_10.setObjectName("label_10")
         self.verticalLayout_13.addWidget(self.label_10)
         self.label_22 = QtWidgets.QLabel(self.widget_13)
         self.label_22.setStyleSheet("QLabel{\n"
 "    border: none;\n"
-"   background-color: rgb(230, 230, 230);\n"
+"    background-color: rgb(230, 230, 230);\n"
+"    \n"
+"    font: 100 8pt \"MS Shell Dlg 2\";\n"
+"font-weight:bold\n"
+"    \n"
 "\n"
-" font-weight: bold;\n"
 "}")
         self.label_22.setAlignment(QtCore.Qt.AlignCenter)
         self.label_22.setObjectName("label_22")
@@ -380,7 +396,9 @@ class Ui_TabWidget(object):
         self.verticalLayout_5.setSpacing(0)
         self.verticalLayout_5.setObjectName("verticalLayout_5")
         self.label_3 = QtWidgets.QLabel(self.widget)
-        self.label_3.setStyleSheet("")
+        self.label_3.setStyleSheet("QLabel{\n"
+"font: 8pt \"MS Shell Dlg 2\";\n"
+"}")
         self.label_3.setWordWrap(False)
         self.label_3.setObjectName("label_3")
         self.verticalLayout_5.addWidget(self.label_3)
@@ -388,7 +406,10 @@ class Ui_TabWidget(object):
         self.label_13.setStyleSheet("QLabel{\n"
 "    border: none;\n"
 "    background-color: rgb(230, 230, 230);\n"
-"    font-weight: bold;\n"
+"    \n"
+"    font: 100 8pt \"MS Shell Dlg 2\";\n"
+"font-weight:bold\n"
+"    \n"
 "\n"
 "}")
         self.label_13.setAlignment(QtCore.Qt.AlignCenter)
@@ -406,14 +427,20 @@ class Ui_TabWidget(object):
         self.verticalLayout_8.setSpacing(0)
         self.verticalLayout_8.setObjectName("verticalLayout_8")
         self.label_5 = QtWidgets.QLabel(self.widget_3)
+        self.label_5.setStyleSheet("QLabel{\n"
+"font: 8pt \"MS Shell Dlg 2\";\n"
+"}")
         self.label_5.setObjectName("label_5")
         self.verticalLayout_8.addWidget(self.label_5)
         self.label_17 = QtWidgets.QLabel(self.widget_3)
         self.label_17.setStyleSheet("QLabel{\n"
 "    border: none;\n"
-"   background-color: rgb(230, 230, 230);\n"
+"    background-color: rgb(230, 230, 230);\n"
+"    \n"
+"    font: 100 8pt \"MS Shell Dlg 2\";\n"
+"font-weight:bold\n"
+"    \n"
 "\n"
-" font-weight: bold;\n"
 "}")
         self.label_17.setAlignment(QtCore.Qt.AlignCenter)
         self.label_17.setObjectName("label_17")
@@ -430,14 +457,20 @@ class Ui_TabWidget(object):
         self.verticalLayout_6.setSpacing(0)
         self.verticalLayout_6.setObjectName("verticalLayout_6")
         self.label_4 = QtWidgets.QLabel(self.widget_2)
+        self.label_4.setStyleSheet("QLabel{\n"
+"font: 8pt \"MS Shell Dlg 2\";\n"
+"}")
         self.label_4.setObjectName("label_4")
         self.verticalLayout_6.addWidget(self.label_4)
         self.label_16 = QtWidgets.QLabel(self.widget_2)
         self.label_16.setStyleSheet("QLabel{\n"
 "    border: none;\n"
-"   background-color: rgb(230, 230, 230);\n"
+"    background-color: rgb(230, 230, 230);\n"
+"    \n"
+"    font: 100 8pt \"MS Shell Dlg 2\";\n"
+"font-weight:bold\n"
+"    \n"
 "\n"
-" font-weight: bold;\n"
 "}")
         self.label_16.setAlignment(QtCore.Qt.AlignCenter)
         self.label_16.setObjectName("label_16")
@@ -453,14 +486,20 @@ class Ui_TabWidget(object):
         self.verticalLayout_14.setSpacing(0)
         self.verticalLayout_14.setObjectName("verticalLayout_14")
         self.label_11 = QtWidgets.QLabel(self.widget_8)
+        self.label_11.setStyleSheet("QLabel{\n"
+"font: 8pt \"MS Shell Dlg 2\";\n"
+"}")
         self.label_11.setObjectName("label_11")
         self.verticalLayout_14.addWidget(self.label_11)
         self.label_23 = QtWidgets.QLabel(self.widget_8)
         self.label_23.setStyleSheet("QLabel{\n"
 "    border: none;\n"
-"   background-color: rgb(230, 230, 230);\n"
-"  \n"
-" font-weight: bold;\n"
+"    background-color: rgb(230, 230, 230);\n"
+"    \n"
+"    font: 100 8pt \"MS Shell Dlg 2\";\n"
+"font-weight:bold\n"
+"    \n"
+"\n"
 "}")
         self.label_23.setAlignment(QtCore.Qt.AlignCenter)
         self.label_23.setObjectName("label_23")
@@ -476,14 +515,20 @@ class Ui_TabWidget(object):
         self.verticalLayout_10.setSpacing(0)
         self.verticalLayout_10.setObjectName("verticalLayout_10")
         self.label_8 = QtWidgets.QLabel(self.widget_5)
+        self.label_8.setStyleSheet("QLabel{\n"
+"font: 8pt \"MS Shell Dlg 2\";\n"
+"}")
         self.label_8.setObjectName("label_8")
         self.verticalLayout_10.addWidget(self.label_8)
         self.label_19 = QtWidgets.QLabel(self.widget_5)
         self.label_19.setStyleSheet("QLabel{\n"
 "    border: none;\n"
-"   background-color: rgb(230, 230, 230);\n"
+"    background-color: rgb(230, 230, 230);\n"
+"    \n"
+"    font: 100 8pt \"MS Shell Dlg 2\";\n"
+"font-weight:bold\n"
+"    \n"
 "\n"
-" font-weight: bold;\n"
 "}")
         self.label_19.setAlignment(QtCore.Qt.AlignCenter)
         self.label_19.setObjectName("label_19")
@@ -499,14 +544,20 @@ class Ui_TabWidget(object):
         self.verticalLayout_12.setSpacing(0)
         self.verticalLayout_12.setObjectName("verticalLayout_12")
         self.label_9 = QtWidgets.QLabel(self.widget_7)
+        self.label_9.setStyleSheet("QLabel{\n"
+"font: 8pt \"MS Shell Dlg 2\";\n"
+"}")
         self.label_9.setObjectName("label_9")
         self.verticalLayout_12.addWidget(self.label_9)
         self.label_21 = QtWidgets.QLabel(self.widget_7)
         self.label_21.setStyleSheet("QLabel{\n"
 "    border: none;\n"
-"   background-color: rgb(230, 230, 230);\n"
+"    background-color: rgb(230, 230, 230);\n"
+"    \n"
+"    font: 100 8pt \"MS Shell Dlg 2\";\n"
+"font-weight:bold\n"
+"    \n"
 "\n"
-" font-weight: bold;\n"
 "}")
         self.label_21.setAlignment(QtCore.Qt.AlignCenter)
         self.label_21.setObjectName("label_21")
@@ -522,14 +573,20 @@ class Ui_TabWidget(object):
         self.verticalLayout_9.setSpacing(0)
         self.verticalLayout_9.setObjectName("verticalLayout_9")
         self.label_6 = QtWidgets.QLabel(self.widget_4)
+        self.label_6.setStyleSheet("QLabel{\n"
+"font: 8pt \"MS Shell Dlg 2\";\n"
+"}")
         self.label_6.setObjectName("label_6")
         self.verticalLayout_9.addWidget(self.label_6)
         self.label_18 = QtWidgets.QLabel(self.widget_4)
         self.label_18.setStyleSheet("QLabel{\n"
 "    border: none;\n"
-"   background-color: rgb(230, 230, 230);\n"
-"  \n"
-" font-weight: bold;\n"
+"    background-color: rgb(230, 230, 230);\n"
+"    \n"
+"    font: 100 8pt \"MS Shell Dlg 2\";\n"
+"font-weight:bold\n"
+"    \n"
+"\n"
 "}")
         self.label_18.setAlignment(QtCore.Qt.AlignCenter)
         self.label_18.setObjectName("label_18")
@@ -545,14 +602,20 @@ class Ui_TabWidget(object):
         self.verticalLayout_17.setSpacing(0)
         self.verticalLayout_17.setObjectName("verticalLayout_17")
         self.label_14 = QtWidgets.QLabel(self.widget_9)
+        self.label_14.setStyleSheet("QLabel{\n"
+"font: 8pt \"MS Shell Dlg 2\";\n"
+"}")
         self.label_14.setObjectName("label_14")
         self.verticalLayout_17.addWidget(self.label_14)
         self.label_25 = QtWidgets.QLabel(self.widget_9)
         self.label_25.setStyleSheet("QLabel{\n"
 "    border: none;\n"
-"   background-color: rgb(230, 230, 230);\n"
-"  \n"
-" font-weight: bold;\n"
+"    background-color: rgb(230, 230, 230);\n"
+"    \n"
+"    font: 100 8pt \"MS Shell Dlg 2\";\n"
+"font-weight:bold\n"
+"    \n"
+"\n"
 "}")
         self.label_25.setAlignment(QtCore.Qt.AlignCenter)
         self.label_25.setObjectName("label_25")
@@ -561,14 +624,18 @@ class Ui_TabWidget(object):
         self.verticalLayout_4.addLayout(self.gridLayout_2)
         self.verticalLayout_4.setStretch(1, 1)
         self.verticalLayout_3.addWidget(self.driver_info_widget)
-        self.widget_19 = QtWidgets.QWidget(self.MiddleCol)
-        self.widget_19.setObjectName("widget_19")
-        self.verticalLayout_3.addWidget(self.widget_19)
         self.widget_6 = QtWidgets.QWidget(self.MiddleCol)
+        self.widget_6.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.widget_6.setStyleSheet("QWidget{\n"
 " background-color: blue;\n"
 "border: 1px solid black\n"
-"}")
+"}\n"
+"\n"
+"QWidget:hover{\n"
+"    background-color: rgb(0, 85, 255);\n"
+"}\n"
+"\n"
+"")
         self.widget_6.setObjectName("widget_6")
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout(self.widget_6)
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
@@ -578,6 +645,7 @@ class Ui_TabWidget(object):
 " border : none;\n"
 "    font: 12pt \"MS Shell Dlg 2\";\n"
 "font-weight: bold;\n"
+"background-color : none\n"
 "\n"
 "\n"
 "}")
@@ -587,10 +655,14 @@ class Ui_TabWidget(object):
         self.verticalLayout_3.setStretch(0, 5)
         self.verticalLayout_3.setStretch(1, 5)
         self.verticalLayout_3.setStretch(2, 50)
-        self.verticalLayout_3.setStretch(3, 1)
-        self.verticalLayout_3.setStretch(4, 4)
+        self.verticalLayout_3.setStretch(3, 4)
         self.horizontalLayout.addWidget(self.MiddleCol)
         self.RightCol = QtWidgets.QWidget(self.RobotOperation)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.RightCol.sizePolicy().hasHeightForWidth())
+        self.RightCol.setSizePolicy(sizePolicy)
         self.RightCol.setStyleSheet("QWidget{\n"
 "background-color: none;\n"
 "border: none\n"
@@ -598,7 +670,7 @@ class Ui_TabWidget(object):
 "}")
         self.RightCol.setObjectName("RightCol")
         self.verticalLayout_18 = QtWidgets.QVBoxLayout(self.RightCol)
-        self.verticalLayout_18.setSpacing(6)
+        self.verticalLayout_18.setSpacing(15)
         self.verticalLayout_18.setObjectName("verticalLayout_18")
         self.widget_10 = QtWidgets.QWidget(self.RightCol)
         self.widget_10.setStyleSheet("QWidget{\n"
@@ -783,17 +855,17 @@ class Ui_TabWidget(object):
         self.verticalLayout_25.setStretch(1, 1)
         self.horizontalLayout_9.addWidget(self.widget_23)
         self.verticalLayout_18.addWidget(self.widget_11)
-        self.widget_16 = QtWidgets.QWidget(self.RightCol)
-        self.widget_16.setStyleSheet("QWidget{\n"
+        self.fault_detection_widget = QtWidgets.QWidget(self.RightCol)
+        self.fault_detection_widget.setStyleSheet("QWidget{\n"
 "background-color: rgb(255, 255, 255);\n"
 "border: 1px solid rgb(211, 211, 211);\n"
 "\n"
 "}")
-        self.widget_16.setObjectName("widget_16")
-        self.verticalLayout_21 = QtWidgets.QVBoxLayout(self.widget_16)
+        self.fault_detection_widget.setObjectName("fault_detection_widget")
+        self.verticalLayout_21 = QtWidgets.QVBoxLayout(self.fault_detection_widget)
         self.verticalLayout_21.setContentsMargins(10, 10, 10, 10)
         self.verticalLayout_21.setObjectName("verticalLayout_21")
-        self.label_29 = QtWidgets.QLabel(self.widget_16)
+        self.label_29 = QtWidgets.QLabel(self.fault_detection_widget)
         self.label_29.setStyleSheet("QLabel{\n"
 " border : none;\n"
 "    font: 16pt \"MS Shell Dlg 2\";\n"
@@ -802,75 +874,35 @@ class Ui_TabWidget(object):
 "}")
         self.label_29.setObjectName("label_29")
         self.verticalLayout_21.addWidget(self.label_29)
-        self.scrollArea = QtWidgets.QScrollArea(self.widget_16)
-        self.scrollArea.setStyleSheet("QScrollArea{\n"
-"border: 1px solid black\n"
-"}")
+        self.scrollArea = QtWidgets.QScrollArea(self.fault_detection_widget)
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 211, 147))
-        self.scrollAreaWidgetContents.setStyleSheet("QWidget{\n"
-"border: none}")
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 213, 132))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
-        self.verticalLayout_22 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
-        self.verticalLayout_22.setContentsMargins(0, 0, 0, 0)
-        self.verticalLayout_22.setSpacing(0)
-        self.verticalLayout_22.setObjectName("verticalLayout_22")
-        self.scrollArea_2 = QtWidgets.QScrollArea(self.scrollAreaWidgetContents)
-        self.scrollArea_2.setStyleSheet("QScrollArea{\n"
-"    color: white;\n"
-"    background-color: rgb(255, 255, 255);\n"
-"    border: none\n"
-"\n"
-"\n"
-"}")
-        self.scrollArea_2.setWidgetResizable(True)
-        self.scrollArea_2.setObjectName("scrollArea_2")
-        self.scrollAreaWidgetContents_2 = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_2.setGeometry(QtCore.QRect(0, 0, 211, 147))
-        self.scrollAreaWidgetContents_2.setObjectName("scrollAreaWidgetContents_2")
-        self.verticalLayout_29 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_2)
-        self.verticalLayout_29.setObjectName("verticalLayout_29")
-        self.label_33 = QtWidgets.QLabel(self.scrollAreaWidgetContents_2)
-        self.label_33.setObjectName("label_33")
-        self.verticalLayout_29.addWidget(self.label_33)
-        self.label_34 = QtWidgets.QLabel(self.scrollAreaWidgetContents_2)
-        self.label_34.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_34.setObjectName("label_34")
-        self.verticalLayout_29.addWidget(self.label_34)
-        self.label_35 = QtWidgets.QLabel(self.scrollAreaWidgetContents_2)
-        self.label_35.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_35.setObjectName("label_35")
-        self.verticalLayout_29.addWidget(self.label_35)
-        self.label_36 = QtWidgets.QLabel(self.scrollAreaWidgetContents_2)
-        self.label_36.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_36.setObjectName("label_36")
-        self.verticalLayout_29.addWidget(self.label_36)
-        self.label_37 = QtWidgets.QLabel(self.scrollAreaWidgetContents_2)
-        self.label_37.setText("")
-        self.label_37.setObjectName("label_37")
-        self.verticalLayout_29.addWidget(self.label_37)
-        self.verticalLayout_29.setStretch(0, 1)
-        self.verticalLayout_29.setStretch(1, 1)
-        self.verticalLayout_29.setStretch(2, 1)
-        self.verticalLayout_29.setStretch(3, 1)
-        self.scrollArea_2.setWidget(self.scrollAreaWidgetContents_2)
-        self.verticalLayout_22.addWidget(self.scrollArea_2)
+        self.horizontalLayout_8 = QtWidgets.QHBoxLayout(self.scrollAreaWidgetContents)
+        self.horizontalLayout_8.setObjectName("horizontalLayout_8")
+        self.label_27 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.label_27.setObjectName("label_27")
+        self.horizontalLayout_8.addWidget(self.label_27)
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.verticalLayout_21.addWidget(self.scrollArea)
-        self.verticalLayout_18.addWidget(self.widget_16)
-        self.widget_20 = QtWidgets.QWidget(self.RightCol)
-        self.widget_20.setObjectName("widget_20")
-        self.verticalLayout_18.addWidget(self.widget_20)
+        self.verticalLayout_18.addWidget(self.fault_detection_widget)
         self.horizontalLayout_7 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_7.setSpacing(10)
         self.horizontalLayout_7.setObjectName("horizontalLayout_7")
         self.widget_17 = QtWidgets.QWidget(self.RightCol)
+        self.widget_17.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.widget_17.setStyleSheet("QWidget{\n"
 " background-color: blue;\n"
 "border: 1px solid black\n"
-"}")
+"}\n"
+"QWidget:hover{\n"
+"    background-color: rgb(0, 85, 255);\n"
+"\n"
+"}\n"
+"\n"
+"")
         self.widget_17.setObjectName("widget_17")
         self.verticalLayout_20 = QtWidgets.QVBoxLayout(self.widget_17)
         self.verticalLayout_20.setObjectName("verticalLayout_20")
@@ -880,17 +912,26 @@ class Ui_TabWidget(object):
 " border : none;\n"
 "    font: 12pt \"MS Shell Dlg 2\";\n"
 "font-weight: bold;\n"
+"background-color: none\n"
 "\n"
+"}\n"
 "\n"
-"}")
+"")
         self.pushButton_4.setObjectName("pushButton_4")
         self.verticalLayout_20.addWidget(self.pushButton_4)
         self.horizontalLayout_7.addWidget(self.widget_17)
         self.widget_18 = QtWidgets.QWidget(self.RightCol)
+        self.widget_18.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.widget_18.setStyleSheet("QWidget{\n"
 " background-color: blue;\n"
 "border: 1px solid black\n"
-"}")
+"}\n"
+"\n"
+"QWidget:hover{\n"
+"    background-color: rgb(0, 85, 255);\n"
+"\n"
+"}\n"
+"")
         self.widget_18.setObjectName("widget_18")
         self.verticalLayout_19 = QtWidgets.QVBoxLayout(self.widget_18)
         self.verticalLayout_19.setObjectName("verticalLayout_19")
@@ -900,6 +941,7 @@ class Ui_TabWidget(object):
 " border : none;\n"
 "    font: 12pt \"MS Shell Dlg 2\";\n"
 "font-weight: bold;\n"
+"background-color: none\n"
 "\n"
 "\n"
 "}")
@@ -910,8 +952,7 @@ class Ui_TabWidget(object):
         self.verticalLayout_18.setStretch(0, 10)
         self.verticalLayout_18.setStretch(1, 20)
         self.verticalLayout_18.setStretch(2, 60)
-        self.verticalLayout_18.setStretch(3, 1)
-        self.verticalLayout_18.setStretch(4, 6)
+        self.verticalLayout_18.setStretch(3, 6)
         self.horizontalLayout.addWidget(self.RightCol)
         self.horizontalLayout.setStretch(0, 2)
         self.horizontalLayout.setStretch(1, 2)
@@ -956,10 +997,7 @@ class Ui_TabWidget(object):
     def retranslateUi(self, TabWidget):
         _translate = QtCore.QCoreApplication.translate
         TabWidget.setWindowTitle(_translate("TabWidget", "AM - GUI"))
-        self.SagittalPlane.setText(_translate("TabWidget", "Sagittal Plane"))
-        self.animation_walking1.setText(_translate("TabWidget", "Frontal Plane"))
-        self.label_27.setText(_translate("TabWidget", "TextLabel"))
-        self.pushButton.setText(_translate("TabWidget", "Force Quit"))
+        self.force_quit_button.setText(_translate("TabWidget", "Force Quit"))
         self.battery_level.setText(_translate("TabWidget", "Battery Level :"))
         self.label_2.setText(_translate("TabWidget", "Usage Time : "))
         self.label_usage_time.setText(_translate("TabWidget", "-"))
@@ -998,10 +1036,7 @@ class Ui_TabWidget(object):
         self.pushButton_7.setText(_translate("TabWidget", "PushButton"))
         self.label_32.setText(_translate("TabWidget", "TextLabel"))
         self.label_29.setText(_translate("TabWidget", "Fault Detection"))
-        self.label_33.setText(_translate("TabWidget", "Sensor fault 1: LH Inc Encoder error"))
-        self.label_34.setText(_translate("TabWidget", "."))
-        self.label_35.setText(_translate("TabWidget", "."))
-        self.label_36.setText(_translate("TabWidget", "."))
+        self.label_27.setText(_translate("TabWidget", "TextLabel"))
         self.pushButton_4.setText(_translate("TabWidget", "End data storage"))
         self.pushButton_3.setText(_translate("TabWidget", "Stamp"))
         TabWidget.setTabText(TabWidget.indexOf(self.RobotOperation), _translate("TabWidget", "Robot Operation"))

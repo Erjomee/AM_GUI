@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>764</width>
-    <height>509</height>
+    <width>600</width>
+    <height>400</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -33,14 +33,14 @@
    </font>
   </property>
   <property name="cursor">
-   <cursorShape>ArrowCursor</cursorShape>
+   <cursorShape>PointingHandCursor</cursorShape>
   </property>
   <property name="windowTitle">
    <string>AM - GUI</string>
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>../../assets/bionic-leg.png</normaloff>../../assets/bionic-leg.png</iconset>
+    <normaloff>../../../assets/bionic-leg.png</normaloff>../../../assets/bionic-leg.png</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">QTabWidget::pane {
@@ -75,7 +75,7 @@ QTabBar::tab:!selected:hover {
    <enum>QTabWidget::Rounded</enum>
   </property>
   <property name="currentIndex">
-   <number>3</number>
+   <number>0</number>
   </property>
   <property name="iconSize">
    <size>
@@ -137,10 +137,10 @@ border: none
       </property>
       <layout class="QVBoxLayout" name="verticalLayout" stretch="8,7,1">
        <property name="spacing">
-        <number>15</number>
+        <number>10</number>
        </property>
        <property name="topMargin">
-        <number>13</number>
+        <number>10</number>
        </property>
        <item>
         <widget class="QWidget" name="animation_widget" native="true">
@@ -193,7 +193,6 @@ border: 1px solid black
 }
 
 QWidget:hover{
-  cursor: pointer;
 	background-color: rgb(0, 85, 255);
 }
 
@@ -205,8 +204,35 @@ QWidget:hover{
           <property name="spacing">
            <number>4</number>
           </property>
+          <property name="sizeConstraint">
+           <enum>QLayout::SetDefaultConstraint</enum>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
           <item>
            <widget class="QPushButton" name="force_quit_button">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="layoutDirection">
+             <enum>Qt::LeftToRight</enum>
+            </property>
             <property name="styleSheet">
              <string notr="true">
 
@@ -222,6 +248,15 @@ background-color : none
             </property>
             <property name="text">
              <string>Force Quit</string>
+            </property>
+            <property name="autoDefault">
+             <bool>false</bool>
+            </property>
+            <property name="default">
+             <bool>false</bool>
+            </property>
+            <property name="flat">
+             <bool>false</bool>
             </property>
            </widget>
           </item>
@@ -247,7 +282,7 @@ border: none
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_3" stretch="5,5,50,4">
        <property name="spacing">
-        <number>15</number>
+        <number>10</number>
        </property>
        <item>
         <widget class="QWidget" name="battery_widget" native="true">
@@ -286,9 +321,9 @@ font: 8pt &quot;MS Shell Dlg 2&quot;;
             </property>
             <property name="styleSheet">
              <string notr="true">QProgressBar{
-font-weight: bold;
-
-}</string>
+	font-weight: bold;
+}
+</string>
             </property>
             <property name="value">
              <number>0</number>
@@ -425,7 +460,7 @@ font: 8pt &quot;MS Shell Dlg 2&quot;;
                 </widget>
                </item>
                <item>
-                <widget class="QLabel" name="label_20">
+                <widget class="QLabel" name="RH_Flex_label">
                  <property name="styleSheet">
                   <string notr="true">QLabel{
     border: none;
@@ -478,7 +513,7 @@ font: 8pt &quot;MS Shell Dlg 2&quot;;
                 </widget>
                </item>
                <item>
-                <widget class="QLabel" name="label_24">
+                <widget class="QLabel" name="RA_Lat_label">
                  <property name="styleSheet">
                   <string notr="true">QLabel{
     border: none;
@@ -531,7 +566,7 @@ font: 8pt &quot;MS Shell Dlg 2&quot;;
                 </widget>
                </item>
                <item>
-                <widget class="QLabel" name="label_26">
+                <widget class="QLabel" name="RA_Med_label">
                  <property name="styleSheet">
                   <string notr="true">QLabel{
     border: none;
@@ -585,7 +620,7 @@ font: 8pt &quot;MS Shell Dlg 2&quot;;
                 </widget>
                </item>
                <item>
-                <widget class="QLabel" name="label_22">
+                <widget class="QLabel" name="RK_label">
                  <property name="styleSheet">
                   <string notr="true">QLabel{
     border: none;
@@ -641,7 +676,7 @@ font: 8pt &quot;MS Shell Dlg 2&quot;;
                 </widget>
                </item>
                <item>
-                <widget class="QLabel" name="label_13">
+                <widget class="QLabel" name="LH_Abd_label">
                  <property name="styleSheet">
                   <string notr="true">QLabel{
     border: none;
@@ -695,7 +730,7 @@ font: 8pt &quot;MS Shell Dlg 2&quot;;
                 </widget>
                </item>
                <item>
-                <widget class="QLabel" name="label_17">
+                <widget class="QLabel" name="LH_Rot_label">
                  <property name="styleSheet">
                   <string notr="true">QLabel{
     border: none;
@@ -749,7 +784,7 @@ font: 8pt &quot;MS Shell Dlg 2&quot;;
                 </widget>
                </item>
                <item>
-                <widget class="QLabel" name="label_16">
+                <widget class="QLabel" name="RH_Abd_label">
                  <property name="styleSheet">
                   <string notr="true">QLabel{
     border: none;
@@ -802,7 +837,7 @@ font: 8pt &quot;MS Shell Dlg 2&quot;;
                 </widget>
                </item>
                <item>
-                <widget class="QLabel" name="label_23">
+                <widget class="QLabel" name="LA_Lat_label">
                  <property name="styleSheet">
                   <string notr="true">QLabel{
     border: none;
@@ -855,7 +890,7 @@ font: 8pt &quot;MS Shell Dlg 2&quot;;
                 </widget>
                </item>
                <item>
-                <widget class="QLabel" name="label_19">
+                <widget class="QLabel" name="LH_Flex_label">
                  <property name="styleSheet">
                   <string notr="true">QLabel{
     border: none;
@@ -908,7 +943,7 @@ font: 8pt &quot;MS Shell Dlg 2&quot;;
                 </widget>
                </item>
                <item>
-                <widget class="QLabel" name="label_21">
+                <widget class="QLabel" name="LK_label">
                  <property name="styleSheet">
                   <string notr="true">QLabel{
     border: none;
@@ -961,7 +996,7 @@ font: 8pt &quot;MS Shell Dlg 2&quot;;
                 </widget>
                </item>
                <item>
-                <widget class="QLabel" name="label_18">
+                <widget class="QLabel" name="RH_Rot_label">
                  <property name="styleSheet">
                   <string notr="true">QLabel{
     border: none;
@@ -1014,7 +1049,7 @@ font: 8pt &quot;MS Shell Dlg 2&quot;;
                 </widget>
                </item>
                <item>
-                <widget class="QLabel" name="label_25">
+                <widget class="QLabel" name="LA_Med_label">
                  <property name="styleSheet">
                   <string notr="true">QLabel{
     border: none;
@@ -1054,15 +1089,35 @@ border: 1px solid black
 }
 
 QWidget:hover{
-  cursor: pointer;
 	background-color: rgb(0, 85, 255);
 }
 
 </string>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
           <item>
            <widget class="QPushButton" name="pushButton_2">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="styleSheet">
              <string notr="true">QPushButton{
  	color: white;
@@ -1074,6 +1129,15 @@ QWidget:hover{
             </property>
             <property name="text">
              <string>Output limit [100]%</string>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>12</width>
+              <height>12</height>
+             </size>
+            </property>
+            <property name="flat">
+             <bool>false</bool>
             </property>
            </widget>
           </item>
@@ -1098,9 +1162,9 @@ border: none
 	
 }</string>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout_18" stretch="10,20,60,6">
+      <layout class="QVBoxLayout" name="verticalLayout_18" stretch="13,22,55,6">
        <property name="spacing">
-        <number>15</number>
+        <number>10</number>
        </property>
        <item>
         <widget class="QWidget" name="widget_10" native="true">
@@ -1123,7 +1187,7 @@ border: 1px solid rgb(211, 211, 211)
 }</string>
             </property>
             <property name="text">
-             <string>Current State</string>
+             <string>현재 State 표시</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -1382,7 +1446,7 @@ font-weight: bold
         </widget>
        </item>
        <item>
-        <widget class="QWidget" name="widget_16" native="true">
+        <widget class="QWidget" name="fault_detection_widget" native="true">
          <property name="styleSheet">
           <string notr="true">QWidget{
 background-color: rgb(255, 255, 255);
@@ -1390,165 +1454,15 @@ border: 1px solid rgb(211, 211, 211);
 
 }</string>
          </property>
-         <layout class="QVBoxLayout" name="verticalLayout_21">
-          <property name="leftMargin">
-           <number>10</number>
-          </property>
-          <property name="topMargin">
-           <number>10</number>
-          </property>
-          <property name="rightMargin">
-           <number>10</number>
-          </property>
-          <property name="bottomMargin">
-           <number>10</number>
-          </property>
-          <item>
-           <widget class="QLabel" name="label_29">
-            <property name="styleSheet">
-             <string notr="true">QLabel{
- border : none;
-	font: 16pt &quot;MS Shell Dlg 2&quot;;
-
-
-}</string>
-            </property>
-            <property name="text">
-             <string>Fault Detection</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QScrollArea" name="scrollArea">
-            <property name="styleSheet">
-             <string notr="true">QScrollArea{
-border: 1px solid black
-}</string>
-            </property>
-            <property name="widgetResizable">
-             <bool>true</bool>
-            </property>
-            <widget class="QWidget" name="scrollAreaWidgetContents">
-             <property name="geometry">
-              <rect>
-               <x>0</x>
-               <y>0</y>
-               <width>310</width>
-               <height>164</height>
-              </rect>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QWidget{
-border: none}</string>
-             </property>
-             <layout class="QVBoxLayout" name="verticalLayout_22">
-              <property name="spacing">
-               <number>0</number>
-              </property>
-              <property name="leftMargin">
-               <number>0</number>
-              </property>
-              <property name="topMargin">
-               <number>0</number>
-              </property>
-              <property name="rightMargin">
-               <number>0</number>
-              </property>
-              <property name="bottomMargin">
-               <number>0</number>
-              </property>
-              <item>
-               <widget class="QScrollArea" name="scrollArea_2">
-                <property name="styleSheet">
-                 <string notr="true">QScrollArea{
-	color: white;
-	background-color: rgb(255, 255, 255);
-	border: none
-
-
-}</string>
-                </property>
-                <property name="widgetResizable">
-                 <bool>true</bool>
-                </property>
-                <widget class="QWidget" name="scrollAreaWidgetContents_2">
-                 <property name="geometry">
-                  <rect>
-                   <x>0</x>
-                   <y>0</y>
-                   <width>310</width>
-                   <height>164</height>
-                  </rect>
-                 </property>
-                 <layout class="QVBoxLayout" name="verticalLayout_29" stretch="1,1,1,1,0">
-                  <item>
-                   <widget class="QLabel" name="label_33">
-                    <property name="styleSheet">
-                     <string notr="true">QL	abel{
-	font: 8pt &quot;MS Shell Dlg 2&quot;;
-
-}</string>
-                    </property>
-                    <property name="text">
-                     <string>Sensor fault 1: LH Inc Encoder error</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QLabel" name="label_34">
-                    <property name="text">
-                     <string>.</string>
-                    </property>
-                    <property name="alignment">
-                     <set>Qt::AlignCenter</set>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QLabel" name="label_35">
-                    <property name="text">
-                     <string>.</string>
-                    </property>
-                    <property name="alignment">
-                     <set>Qt::AlignCenter</set>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QLabel" name="label_36">
-                    <property name="text">
-                     <string>.</string>
-                    </property>
-                    <property name="alignment">
-                     <set>Qt::AlignCenter</set>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QLabel" name="label_37">
-                    <property name="text">
-                     <string/>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </widget>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </widget>
-          </item>
-         </layout>
         </widget>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_7">
+        <layout class="QHBoxLayout" name="horizontalLayout_7" stretch="0,0">
          <property name="spacing">
           <number>10</number>
          </property>
          <item>
-          <widget class="QWidget" name="widget_17" native="true">
+          <widget class="QWidget" name="recording_button_container" native="true">
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
            </property>
@@ -1558,16 +1472,35 @@ border: none}</string>
 border: 1px solid black
 }
 QWidget:hover{
-  cursor: pointer;
 	background-color: rgb(0, 85, 255);
-
 }
 
 </string>
            </property>
-           <layout class="QVBoxLayout" name="verticalLayout_20">
+           <layout class="QHBoxLayout" name="horizontalLayout_12">
+            <property name="spacing">
+             <number>0</number>
+            </property>
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
             <item>
-             <widget class="QPushButton" name="pushButton_4">
+             <widget class="QPushButton" name="recording_button">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
               <property name="styleSheet">
                <string notr="true">QPushButton{
  color: white;
@@ -1581,7 +1514,7 @@ background-color: none
 </string>
               </property>
               <property name="text">
-               <string>End data storage</string>
+               <string>Start data storage</string>
               </property>
              </widget>
             </item>
@@ -1590,6 +1523,12 @@ background-color: none
          </item>
          <item>
           <widget class="QWidget" name="widget_18" native="true">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
            </property>
@@ -1599,29 +1538,107 @@ background-color: none
 border: 1px solid black
 }
 
-QWidget:hover{
-  cursor: pointer;
-	background-color: rgb(0, 85, 255);
-
-}
 </string>
            </property>
-           <layout class="QVBoxLayout" name="verticalLayout_19">
+           <layout class="QHBoxLayout" name="horizontalLayout_8" stretch="3,1">
+            <property name="spacing">
+             <number>0</number>
+            </property>
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
             <item>
-             <widget class="QPushButton" name="pushButton_3">
+             <widget class="QPushButton" name="stamp_button">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <family>MS Shell Dlg 2</family>
+                <pointsize>12</pointsize>
+                <weight>75</weight>
+                <italic>false</italic>
+                <bold>true</bold>
+               </font>
+              </property>
               <property name="styleSheet">
                <string notr="true">QPushButton{
  color: white;
- border : none;
+
 	font: 12pt &quot;MS Shell Dlg 2&quot;;
 font-weight: bold;
-background-color: none
+background-color: none;
+border: 1px solid black
 
+
+}
+
+QPushButton:hover{
+background-color: rgb(0, 85, 255);
 
 }</string>
               </property>
               <property name="text">
                <string>Stamp</string>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>12</width>
+                <height>12</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLCDNumber" name="stamp_cpt">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <weight>50</weight>
+                <bold>false</bold>
+                <stylestrategy>PreferAntialias</stylestrategy>
+                <kerning>true</kerning>
+               </font>
+              </property>
+              <property name="autoFillBackground">
+               <bool>false</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QLCDNumber{
+color: white;
+border: none;
+
+	background-color: rgb(138, 138, 138);
+}</string>
+              </property>
+              <property name="smallDecimalPoint">
+               <bool>false</bool>
+              </property>
+              <property name="digitCount">
+               <number>3</number>
+              </property>
+              <property name="segmentStyle">
+               <enum>QLCDNumber::Flat</enum>
+              </property>
+              <property name="intValue" stdset="0">
+               <number>0</number>
               </property>
              </widget>
             </item>
@@ -1636,25 +1653,819 @@ background-color: none
    </layout>
   </widget>
   <widget class="QWidget" name="DataCheck">
+   <property name="cursor">
+    <cursorShape>CrossCursor</cursorShape>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QWidget{
+
+
+}
+
+</string>
+   </property>
    <attribute name="title">
     <string>Data Check</string>
    </attribute>
-   <layout class="QHBoxLayout" name="horizontalLayout_11">
+   <layout class="QHBoxLayout" name="horizontalLayout_11" stretch="0">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
     <item>
-     <widget class="QLabel" name="label_39">
-      <property name="styleSheet">
-       <string notr="true">QLabel{
+     <widget class="QScrollArea" name="scrollArea">
+      <property name="widgetResizable">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="scrollAreaWidgetContents">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>-3379</y>
+         <width>583</width>
+         <height>3750</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>3750</height>
+        </size>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_2" stretch="1,0,0,7">
+        <property name="spacing">
+         <number>0</number>
+        </property>
+        <property name="leftMargin">
+         <number>30</number>
+        </property>
+        <property name="topMargin">
+         <number>30</number>
+        </property>
+        <property name="rightMargin">
+         <number>30</number>
+        </property>
+        <property name="bottomMargin">
+         <number>30</number>
+        </property>
+        <item>
+         <widget class="QWidget" name="widget_16" native="true">
+          <property name="styleSheet">
+           <string notr="true">QWidget{
 
-font-size: 32px
+	background-color: rgb(85, 85, 255);
+}</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QSlider" name="horizontalSlider">
+          <property name="cursor">
+           <cursorShape>OpenHandCursor</cursorShape>
+          </property>
+          <property name="contextMenuPolicy">
+           <enum>Qt::NoContextMenu</enum>
+          </property>
+          <property name="acceptDrops">
+           <bool>false</bool>
+          </property>
+          <property name="toolTip">
+           <string>Set Time</string>
+          </property>
+          <property name="statusTip">
+           <string/>
+          </property>
+          <property name="accessibleName">
+           <string/>
+          </property>
+          <property name="accessibleDescription">
+           <string/>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="tickPosition">
+           <enum>QSlider::TicksAbove</enum>
+          </property>
+          <property name="tickInterval">
+           <number>5</number>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="verticalSpacer_11">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <layout class="QGridLayout" name="gridLayout_3">
+          <property name="horizontalSpacing">
+           <number>30</number>
+          </property>
+          <property name="verticalSpacing">
+           <number>0</number>
+          </property>
+          <item row="10" column="1">
+           <widget class="QWidget" name="RK_plot" native="true">
+            <property name="styleSheet">
+             <string notr="true">QWidget{
+
+	background-color: rgb(255, 255, 255);
 
 }</string>
-      </property>
-      <property name="text">
-       <string>Page 3</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
+            </property>
+           </widget>
+          </item>
+          <item row="13" column="1">
+           <widget class="QWidget" name="RA_Lat_plot" native="true">
+            <property name="styleSheet">
+             <string notr="true">QWidget{
+
+	background-color: rgb(255, 255, 255);
+
+}</string>
+            </property>
+           </widget>
+          </item>
+          <item row="16" column="0">
+           <widget class="QWidget" name="LA_Med_plot" native="true">
+            <property name="styleSheet">
+             <string notr="true">QWidget{
+
+	background-color: rgb(255, 255, 255);
+
+}</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <widget class="QWidget" name="LH_Rot_plot" native="true">
+            <property name="styleSheet">
+             <string notr="true">QWidget{
+
+	background-color: rgb(255, 255, 255);
+
+}
+</string>
+            </property>
+           </widget>
+          </item>
+          <item row="16" column="1">
+           <widget class="QWidget" name="RA_Med_plot" native="true">
+            <property name="styleSheet">
+             <string notr="true">QWidget{
+
+	background-color: rgb(255, 255, 255);
+
+}</string>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="0">
+           <widget class="QWidget" name="LH_Flex_plot" native="true">
+            <property name="styleSheet">
+             <string notr="true">QWidget{
+
+	background-color: rgb(255, 255, 255);
+
+}
+</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <spacer name="verticalSpacer">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Fixed</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>1</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="15" column="0">
+           <widget class="QLabel" name="label_25">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>90</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel{
+
+	font: 20pt &quot;MS Shell Dlg 2&quot;;
+	background-color: rgb(166, 166, 166);
+
+}</string>
+            </property>
+            <property name="text">
+             <string>LA_Med</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="15" column="1">
+           <widget class="QLabel" name="label_26">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>90</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel{
+
+	font: 20pt &quot;MS Shell Dlg 2&quot;;
+	background-color: rgb(166, 166, 166);
+
+}</string>
+            </property>
+            <property name="text">
+             <string>RA_Med</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="8" column="0">
+           <spacer name="verticalSpacer_5">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Fixed</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="5" column="0">
+           <spacer name="verticalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Fixed</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="8" column="1">
+           <spacer name="verticalSpacer_6">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Fixed</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="5" column="1">
+           <spacer name="verticalSpacer_4">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Fixed</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="11" column="0">
+           <spacer name="verticalSpacer_7">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Fixed</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="11" column="1">
+           <spacer name="verticalSpacer_8">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Fixed</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="14" column="0">
+           <spacer name="verticalSpacer_9">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Fixed</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLabel" name="label_16">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>90</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel{
+
+	font: 20pt &quot;MS Shell Dlg 2&quot;;
+	background-color: rgb(166, 166, 166);
+
+}</string>
+            </property>
+            <property name="text">
+             <string>RH_Abd</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_13">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>90</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel{
+
+	font: 20pt &quot;MS Shell Dlg 2&quot;;
+	background-color: rgb(166, 166, 166);
+
+}</string>
+            </property>
+            <property name="text">
+             <string>LH_Abd</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <spacer name="verticalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Fixed</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="6" column="0">
+           <widget class="QLabel" name="label_19">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>90</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel{
+
+	font: 20pt &quot;MS Shell Dlg 2&quot;;
+	background-color: rgb(166, 166, 166);
+
+}</string>
+            </property>
+            <property name="text">
+             <string>LH_Flex</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="9" column="1">
+           <widget class="QLabel" name="label_22">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>80</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel{
+
+	font: 20pt &quot;MS Shell Dlg 2&quot;;
+	background-color: rgb(166, 166, 166);
+
+}</string>
+            </property>
+            <property name="text">
+             <string>RK</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="1">
+           <widget class="QLabel" name="label_20">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>90</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel{
+
+	font: 20pt &quot;MS Shell Dlg 2&quot;;
+	background-color: rgb(166, 166, 166);
+
+}</string>
+            </property>
+            <property name="text">
+             <string>RH_Flex</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="9" column="0">
+           <widget class="QLabel" name="label_21">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>80</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel{
+
+	font: 20pt &quot;MS Shell Dlg 2&quot;;
+	background-color: rgb(166, 166, 166);
+
+}</string>
+            </property>
+            <property name="text">
+             <string>LK</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="12" column="1">
+           <widget class="QLabel" name="label_24">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>80</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel{
+
+	font: 20pt &quot;MS Shell Dlg 2&quot;;
+	background-color: rgb(166, 166, 166);
+
+}</string>
+            </property>
+            <property name="text">
+             <string>RA_Lat</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="12" column="0">
+           <widget class="QLabel" name="label_23">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>80</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel{
+
+	font: 20pt &quot;MS Shell Dlg 2&quot;;
+	background-color: rgb(166, 166, 166);
+
+}</string>
+            </property>
+            <property name="text">
+             <string>LA_Lat</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QLabel" name="label_18">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>80</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel{
+
+	font: 20pt &quot;MS Shell Dlg 2&quot;;
+	background-color: rgb(166, 166, 166);
+
+}</string>
+            </property>
+            <property name="text">
+             <string>RH_Rot</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QWidget" name="LH_Abd_plot" native="true">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;fzaffazf&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QWidget{
+
+	background-color: rgb(255, 255, 255);
+
+}</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="label_17">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>80</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel{
+
+	font: 20pt &quot;MS Shell Dlg 2&quot;;
+	background-color: rgb(166, 166, 166);
+
+}</string>
+            </property>
+            <property name="text">
+             <string>LH_Rot</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="13" column="0">
+           <widget class="QWidget" name="LA_Lat_plot" native="true">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QWidget{
+
+
+	background-color: rgb(255, 255, 255);
+
+
+
+}</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QWidget" name="RH_Abd_plot" native="true">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QWidget{
+
+	background-color: rgb(255, 255, 255);
+
+}</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QWidget" name="RH_Rot_plot" native="true">
+            <property name="styleSheet">
+             <string notr="true">QWidget{
+
+	background-color: rgb(255, 255, 255);
+
+}</string>
+            </property>
+           </widget>
+          </item>
+          <item row="10" column="0">
+           <widget class="QWidget" name="LK_plot" native="true">
+            <property name="styleSheet">
+             <string notr="true">QWidget{
+
+	background-color: rgb(255, 255, 255);
+
+}</string>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="1">
+           <widget class="QWidget" name="RH_Flex_plot" native="true">
+            <property name="styleSheet">
+             <string notr="true">QWidget{
+
+	background-color: rgb(255, 255, 255);
+
+}</string>
+            </property>
+           </widget>
+          </item>
+          <item row="14" column="1">
+           <spacer name="verticalSpacer_10">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Fixed</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
      </widget>
     </item>
    </layout>
@@ -1664,13 +2475,6 @@ font-size: 32px
     <string>Turn and Debug</string>
    </attribute>
    <layout class="QHBoxLayout" name="horizontalLayout_10">
-    <item>
-     <widget class="QGraphicsView" name="graphicsView">
-      <property name="renderHints">
-       <set>QPainter::TextAntialiasing</set>
-      </property>
-     </widget>
-    </item>
     <item>
      <widget class="QLabel" name="label_38">
       <property name="styleSheet">
@@ -1682,6 +2486,18 @@ font-size: 32px
       </property>
       <property name="text">
        <string>Page2</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="tab">
+   <attribute name="title">
+    <string>Exit</string>
+   </attribute>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>

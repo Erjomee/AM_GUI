@@ -30,7 +30,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>../../assets/bionic-leg.png</normaloff>../../assets/bionic-leg.png</iconset>
+    <normaloff>../../../assets/bionic-leg.png</normaloff>../../../assets/bionic-leg.png</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">QPushButton {
@@ -59,7 +59,7 @@ QPushButton:hover {
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap>../../assets/angela-removebg-preview.png</pixmap>
+    <pixmap>../../../assets/angela-removebg-preview.png</pixmap>
    </property>
   </widget>
   <widget class="QWidget" name="verticalLayoutWidget">
