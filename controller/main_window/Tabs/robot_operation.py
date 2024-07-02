@@ -1,6 +1,5 @@
 import random
 import time
-import pandas as pd
 
 from PyQt5 import QtWidgets
 from PyQt5.QtCore import QTimer
@@ -17,6 +16,11 @@ from model.MainWindow.RobotOperation.Widget.widget_3dplot import Widget3DPlot
 
 
 class RobotOperation:
+    """
+        Initializes the RobotOperation tab class with the main window.
+
+        :param main_window: Reference to the main application window.
+        """
     def __init__(self, main_window):
         self.main_window = main_window
         self.active = False
@@ -27,39 +31,40 @@ class RobotOperation:
         self.timer = QTimer()
         self.timer.timeout.connect(self.update_usage_time)
 
-        # 3D Motion Widget
+        # 3D Motion Widget Variables
         central_widget = self.main_window.findChild(QtWidgets.QWidget, "animation_widget")
         layout = QtWidgets.QVBoxLayout(central_widget)
         self.plot_widget = Widget3DPlot()
         layout.addWidget(self.plot_widget, 70)
 
-        # 2D Feets CoP Widget
+        # 2D Feets CoP Widget Variables
         self.foot_widget = FootWidget(self.main_window)
 
-        # Fault Detection Widget
+        # Fault Detection Widget Variables
         self.fault_detection_widget = FaultDetectionWidget(self.main_window)
 
         # Recording data
         self.on_record = False
         self.RecordingButton = self.main_window.findChild(QtWidgets.QPushButton, "recording_button")
-        self.RecordingButton.clicked.connect(self.handle_recording_button)
-
+        self.RecordingButton.clicked.connect(self.handle_recording_button)  # Click handler recording button
         # Time Stamp
         self.stamp_cpt = 0
         self.StampButton = self.main_window.findChild(QtWidgets.QPushButton, "stamp_button")
         self.StampLCD = self.main_window.findChild(QtWidgets.QLCDNumber, "stamp_cpt")
-        self.StampButton.clicked.connect(self.handle_stamp_button)
+        self.StampButton.clicked.connect(self.handle_stamp_button) # Click handler stamp button
         self.stamp_file_created = False
 
         # Time fault detection
         self.lst_time_fault_detection = []
-        self.fault_file_created = None
 
         self.csv_data_file_path = None
         self.csv_stamp_file_path = None
         self.csv_fault_file_path = None
 
     def handle_stamp_button(self):
+        """
+        Handles the stamp button click event to record a timestamp.
+        """
         # Verify that we are recording
         if self.on_record:
             self.stamp_cpt += 1  # Incrementing the counter
@@ -76,15 +81,21 @@ class RobotOperation:
                 csvwriter.writerow([self.latest_time_insertion , "True"])
 
     def handle_recording_button(self):
+        """
+        Handles the recording button click event to start or end recording.
+        """
         if self.on_record:  # End Recording
             self.end_recording()
         else:  # Start Recording
             self.start_recording()
 
     def start_recording(self):
+        """
+        Starts the recording process and sets up necessary files and folders.
+        """
         date_time = datetime.now().strftime("%Y-%m-%d-%H_%M")
 
-        # Create folder if not exist
+        # Create folder base on the date if not exist
         folder_name = f"model/MainWindow/DataCheck/DataStorage/recording/{date_time}-{self.current_time.replace(':', '_')[:-4]}"
         os.makedirs(folder_name, exist_ok=True)
 
@@ -108,7 +119,7 @@ class RobotOperation:
 
         self.on_record = True
 
-        # Updating graphics
+        # Updating record button color and label state
         self.main_window.recording_button_container.setStyleSheet(
             ''' QWidget{ background-color: rgb(130, 130, 130);
                     color: black;
@@ -120,12 +131,14 @@ class RobotOperation:
         self.RecordingButton.setText("End data storage")
 
     def end_recording(self):
+        """
+        Ends the recording process and updates the UI accordingly.
+        """
         self.on_record = False
         self.stamp_cpt = 0
         self.stamp_file_created = False
-        self.fault_file_created = False
 
-        # Updating graphics
+        # Updating record button color and label state
         self.main_window.recording_button_container.setStyleSheet(
             ''' QWidget{ background-color: blue;
                     color: white;
@@ -140,15 +153,23 @@ class RobotOperation:
         self.main_window.data_check.update_data(self.csv_data_file_path , self.csv_stamp_file_path , self.csv_fault_file_path)
 
     def update_usage_time(self):
+        """
+        Updates the usage time display based on the elapsed time since the timer started.
+        """
         elapsed_time = time.time() - self.active_time
         hours = int(elapsed_time // 3600)
         minutes = int((elapsed_time % 3600) // 60)
         seconds = int(elapsed_time % 60)
         milliseconds = int((elapsed_time % 1) * 1000)
-        self.current_time = f"{hours:02d}:{minutes:02d}:{seconds:02d}:{milliseconds:03d}"
-        self.main_window.label_usage_time.setText(f"{hours:02d}:{minutes:02d}:{seconds:02d}")
+        self.current_time = f"{hours:02d}:{minutes:02d}:{seconds:02d}:{milliseconds:03d}" # Storing time
+        self.main_window.label_usage_time.setText(f"{hours:02d}:{minutes:02d}:{seconds:02d}") # Updating label time
 
     def update(self, data):
+        """
+        Updates the robot operation state with new data and refreshes the UI components.
+
+        :param data: List of new data points received.
+        """
         self.timer.start()
 
         if not self.active:
@@ -169,7 +190,7 @@ class RobotOperation:
         else:
             self.main_window.progressBar.setStyleSheet("QProgressBar::chunk { background-color: rgb(0, 170, 0); }")
 
-        ####################### Temperature Update ########################
+        ####################### Temperature & Amperage Update ########################
         self.main_window.LH_Abd_label.setText(f"{data[34]}% / {data[22]}˚C")
         self.main_window.RH_Abd_label.setText(f"{data[40]}% / {data[28]}˚C")
 
@@ -188,18 +209,18 @@ class RobotOperation:
         self.main_window.LA_Med_label.setText(f"{data[39]}% / {data[27]}˚C")
         self.main_window.RA_Med_label.setText(f"{data[45]}% / {data[33]}˚C")
 
-        ####################### 3D Motion Widget ########################
+        ####################### 3D Motion Widget ########################  unused
         # self.plot_widget.update_coords((data[4], -185), (data[7], 185))
 
         ########################## Foot Widget ###########################
 
-        # Update foot pressure points
+        # Update feets pressure points
         LeftFootPressurePoints = [PressurePoint(data[10], data[11], data[14], vector=Vector(data[15], data[16]))]
         RightFootPressurePoints = [PressurePoint(data[12], data[13], data[17], vector=Vector(data[18], data[19]))]
 
         self.foot_widget.update_pixmap(LeftFootPressurePoints, RightFootPressurePoints)
 
-        ######################## Fault Detection Widget ########################
+        ######################## Fault Detection Widget ########################  also in test
         if random.randint(1,3) == 1 :
             self.fault_detection_widget.update_fault_list([random.randint(1, 23) for _ in range(16)] + [1, 3],
                                                           self.current_time)
@@ -212,5 +233,5 @@ class RobotOperation:
                 tmp = data.copy()
                 time_received = self.current_time
                 tmp.insert(0, time_received)
-                csvwriter.writerow(tmp)
+                csvwriter.writerow(tmp)  # Writtinf new line
                 self.latest_time_insertion = time_received

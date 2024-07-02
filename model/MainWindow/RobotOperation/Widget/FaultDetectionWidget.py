@@ -5,15 +5,26 @@ from PyQt5.QtWidgets import QWidget, QVBoxLayout, QLabel
 
 
 class FaultDetectionWidget(QWidget):
+    """
+    Widget for fault detection in a PyQt5 application.
+    """
+
     def __init__(self, main_window):
+        """
+        Initializes the fault detection widget.
+
+        :param main_window: Reference to the main application window.
+        """
         super(FaultDetectionWidget, self).__init__()
         self.main_window = main_window
         self.fault_detection_widget = self.main_window.findChild(QWidget, "fault_detection_widget")
         layout = QVBoxLayout(self.fault_detection_widget)
+
         # Add margins to the layout
         layout.setContentsMargins(30, 30, 30, 30)  # left, top, right, bottom
-        layout.setSpacing(20)  # spacing between widget
+        layout.setSpacing(20)  # spacing between widgets
 
+        # Title of the widget
         title = QLabel("Fault Detection")
         title.setStyleSheet("QLabel {"
                             "border: none;"
@@ -21,6 +32,7 @@ class FaultDetectionWidget(QWidget):
                             "}")
         layout.addWidget(title)
 
+        # Configure the scroll area
         self.scrollArea = QtWidgets.QScrollArea(self.fault_detection_widget)
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
@@ -34,19 +46,25 @@ class FaultDetectionWidget(QWidget):
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         layout.addWidget(self.scrollArea)
 
+        # Read the CSV file containing fault IDs and descriptions
         self.df = pd.read_csv("model/MainWindow/RobotOperation/static/fault_id.csv")
 
-
+        # List of old fault IDs
         self.old_lst_fault_id = []
 
-    # Function to add a fault in the scroll area base on the ID
     def update_fault_list(self, new_lst_fault_id, time):
-        # Removing unneeded faults
+        """
+        Updates the displayed list of faults in the scroll area.
+
+        :param new_lst_fault_id: New list of fault IDs.
+        :param time: Current time.
+        """
+        # Remove unnecessary faults
         fault_id_to_remove = list(set(self.old_lst_fault_id) - set(new_lst_fault_id))
         faults_labels_to_remove = [self.get_label(fault) for fault in fault_id_to_remove]
         self.remove_fault(faults_labels_to_remove)
 
-        # Adding faults
+        # Add new faults
         fault_id_to_add = list(set(new_lst_fault_id) - set(self.old_lst_fault_id))
         faults_labels_to_add = [self.get_label(fault) for fault in fault_id_to_add]
         faults_description = [self.get_description(fault) for fault in fault_id_to_add]
@@ -55,12 +73,19 @@ class FaultDetectionWidget(QWidget):
         # Update lst_time_fault_detection with current time for new faults
         self.main_window.robot_operation.lst_time_fault_detection.extend([time] * len(fault_id_to_add))
 
-        # Updating the new list of current fault
+        # Update the new list of current faults
         self.old_lst_fault_id = new_lst_fault_id
 
-    # Function to add a list of fault
     def add_fault(self, lst_fault_label, lst_fault_description, time):
+        """
+        Adds a list of faults to the scroll area.
+
+        :param lst_fault_label: List of fault labels.
+        :param lst_fault_description: List of fault descriptions.
+        :param time: Current time.
+        """
         for fault_index in range(len(lst_fault_label)):
+            # Determine color based on fault description
             match lst_fault_description[fault_index]:
                 case "Warning":
                     color = "black"
@@ -71,16 +96,21 @@ class FaultDetectionWidget(QWidget):
                 case _:
                     color = "black"  # Default color if no match
 
-            fault_Qlabel = QtWidgets.QLabel(f"{time} | <span style='color:{color}'>{lst_fault_label[fault_index]}</span>")
+            # Create QLabel for the fault
+            fault_Qlabel = QtWidgets.QLabel(
+                f"{time} | <span style='color:{color}'>{lst_fault_label[fault_index]}</span>")
             fault_Qlabel.setStyleSheet("QLabel {"
                                        "border: none;"
                                        "font: 11pt 'MS Shell Dlg 2';"
-                                       # f"color: {color};"
                                        "}")
             self.verticalLayout.addWidget(fault_Qlabel)
 
-    # Function ton remove a list of fault
     def remove_fault(self, lst_fault):
+        """
+        Removes a list of faults from the scroll area.
+
+        :param lst_fault: List of fault labels to remove.
+        """
         for i in reversed(range(self.verticalLayout.count())):
             widget = self.verticalLayout.itemAt(i).widget()
             if isinstance(widget, QtWidgets.QLabel):
@@ -89,17 +119,26 @@ class FaultDetectionWidget(QWidget):
                         self.verticalLayout.removeWidget(widget)
                         widget.deleteLater()
 
-    # Get the label fault of the associate ID
     def get_label(self, id):
-        # Ensure that the fault exist
+        """
+        Returns the label associated with a fault ID.
+
+        :param id: Fault ID.
+        :return: Fault label.
+        """
+        # Ensure the fault exists
         if not self.df.loc[self.df['id'] == id].empty:
             fault_label = str(self.df.loc[self.df['id'] == id]["label"].iloc[0])
             return fault_label
 
-        # Get the label fault of the associate ID
-
     def get_description(self, id):
-        # Ensure that the fault exist
+        """
+        Returns the description associated with a fault ID.
+
+        :param id: Fault ID.
+        :return: Fault description.
+        """
+        # Ensure the fault exists
         if not self.df.loc[self.df['id'] == id].empty:
             fault_description = str(self.df.loc[self.df['id'] == id]["description"].iloc[0])
             return fault_description

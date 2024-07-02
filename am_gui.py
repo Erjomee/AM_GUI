@@ -1,8 +1,9 @@
 import sys
 
-from Controller.exit_window import ExitWindow
-from Controller.start_window import StartWindow
-from Controller.main_window.main_window import MainWindow
+# Import the necessary classes from the Controller module
+from controller.exit_window import ExitWindow
+from controller.start_window import StartWindow
+from controller.main_window.main_window import MainWindow
 
 class AM_GUI:
     """

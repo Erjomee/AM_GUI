@@ -27,7 +27,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>../../../assets/bionic-leg.png</normaloff>../../../assets/bionic-leg.png</iconset>
+    <normaloff>../../assets/ci-v_cropped.png</normaloff>../../assets/ci-v_cropped.png</iconset>
   </property>
   <property name="autoFillBackground">
    <bool>false</bool>
