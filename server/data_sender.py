@@ -8,15 +8,27 @@ import zlib
 SERVER_IP = "localhost"
 SERVER_PORT = 1818
 
-
-# Function to send data to the dashboard
 def send_data(ip, port, data):
-    # Make a connection with ther server
+    """
+    Function to send data to the server.
+
+    Parameters:
+    ----------
+    ip : str
+        The IP address of the server.
+    port : int
+        The port number of the server.
+    data : dict
+        A dictionary containing the data to be sent.
+    """
+    # Make a connection with the server
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     client_socket.connect((ip, port))
     print("Connected to the server.")
 
+    # Create a bytearray to hold the data
     data_bytes = bytearray(256)
+
     data_bytes[2:6] = struct.pack('<i', data["Battery"])  # 0
 
     data_bytes[6:10] = struct.pack('<f', data["Temp1"])  # 1
@@ -148,9 +160,9 @@ info_dict = {
 
 
 def batteryUpdate():
+    """Function to simulate battery data update and send it to the server."""
     global info_dict
     for i in range(100):
-        # test_data = [battery, w, c , x,y,pressure,x2,y2,pressure2]
         info_dict["Battery"] -= 1
         temp = info_dict["Battery"]
 
@@ -167,14 +179,14 @@ def batteryUpdate():
         info_dict["RK_Amp"] = temp
         info_dict["RA_Lat_Amp"] = temp
         info_dict["RA_Med_Amp"] = temp
+
         send_data(SERVER_IP, SERVER_PORT, info_dict)
         time.sleep(2)
 
-
 def temperatureUpdate():
+    """Function to simulate temperature data update and send it to the server."""
     global info_dict
     for i in range(10000):
-        # test_data = [battery, w, c, x,y,pressure,x2,y2,pressure2]
         info_dict["Temp1"] = float(random.randint(0, 100))
         info_dict["Temp2"] = float(random.randint(0, 100))
         info_dict["Temp3"] = float(random.randint(0, 100))
@@ -192,57 +204,48 @@ def temperatureUpdate():
         info_dict["RK_Temp"] = float(random.randint(0, 100))
         info_dict["RA_Lat_Temp"] = float(random.randint(0, 100))
         info_dict["RA_Med_Temp"] = float(random.randint(0, 100))
+
         send_data(SERVER_IP, SERVER_PORT, info_dict)
         time.sleep(0.5)
 
-
 def feetsPositionUpdate():
+    """Function to simulate foot position data update and send it to the server."""
     global info_dict
     i = 2
 
     for i in range(100000):
         if i % 2 == 0:
-            # Foot in the air
             if i == 0:
                 info_dict["LFoot_x"] += 100
-                # info_dict["LFoot_y"] += 350
             else:
                 info_dict["LFoot_x"] += 200
-                # info_dict["LFoot_y"] += 150
             info_dict["LFootCOP_value"] = 0
-            # Foot in the ground
             info_dict["RFootCOP_x"] = random.randint(-85, 235)
             info_dict["RFootCOP_y"] = random.randint(-80, 80)
             info_dict["RFootCOP_value"] = random.randint(10, 30)
         else:
-            # Foot in the air
             info_dict["RFoot_x"] += 200
-            # info_dict["RFoot_y"] += 150
             info_dict["RFootCOP_value"] = 0
-            # Foot in the ground
             info_dict["LFootCOP_x"] = random.randint(-85, 235)
             info_dict["LFootCOP_y"] = random.randint(-80, 80)
             info_dict["LFootCOP_value"] = random.randint(10, 30)
 
         send_data(SERVER_IP, SERVER_PORT, info_dict)
-        time.sleep(0.05) #max frequencies
-        # time.sleep(0.5)  # max frequencies
-        # time.sleep(1)
-
+        time.sleep(0.05)
 
 time.sleep(2)
 
-# Create threads
+# Create threads for each function
 t1 = threading.Thread(target=batteryUpdate)
 t2 = threading.Thread(target=temperatureUpdate)
 t3 = threading.Thread(target=feetsPositionUpdate)
 
-# # Start threads
+# Start the threads
 t1.start()
 t2.start()
 t3.start()
 
-# Wait for both threads to finish
+# Wait for all threads to complete
 t1.join()
 t2.join()
 t3.join()

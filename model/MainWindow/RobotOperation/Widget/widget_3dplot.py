@@ -48,7 +48,6 @@ class Widget3DPlot(QWidget):
 
     def initRobot(self):
         # Define points for both sides
-
         joints = {
             "R_FRONT_FOOT": (-0.4, -0.1265, 0.18694),
             "R_FOOT": (-0.17923, -0.1265, 0.18694),
@@ -68,7 +67,7 @@ class Widget3DPlot(QWidget):
         # Defining the points
         for name, coords in joints.items():
             xs, ys, zs = [coords[0]], [coords[1]], [coords[2]]
-            self.points[name] = Line3D(xs, ys, zs, c='0.1', marker='.', markersize=4)
+            self.points[name] = Line3D(xs, ys, zs, c='blue', marker='.', markersize=6)
 
         # Defining the lines
         keys = list(self.points.keys())
@@ -77,7 +76,7 @@ class Widget3DPlot(QWidget):
                 self.points[keys[i]].get_data_3d(),
                 self.points[keys[i + 1]].get_data_3d()
             )
-            self.lines[f"{keys[i]}-{keys[i+1]}"] = Line3D(xs, ys, zs, c='0.6')
+            self.lines[f"{keys[i]}-{keys[i+1]}"] = Line3D(xs, ys, zs, c='0.3')
 
         # Place each line on the plot
         for line in self.lines.values():

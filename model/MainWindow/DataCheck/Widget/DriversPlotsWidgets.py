@@ -4,19 +4,33 @@ from PyQt5.QtGui import QPen, QColor, QCursor
 
 
 class DriversPlotsWidgets:
+    """
+    Class to manage and display multiple driver plots using PyQtGraph in a PyQt5 application.
+    """
+
     def __init__(self, main_window):
-        self.driver_widgets = {}
-        self.hover_labels = {}  # Dictionnaire pour stocker les labels de survol
-        self.infinite_lines = {}  # Dictionnaire pour stocker les lignes infinies
-        self.driver = ["LH_Abd", "RH_Abd", "LH_Rot", "RH_Rot", "LH_Flex", "RH_Flex", "LK", "RK", "LA_Lat", "RA_Lat",
-                       "LA_Med", "RA_Med"]
+        """
+        Initializes the DriversPlotsWidgets instance.
 
-        self.temp_plot_styles = {"color": "black", "font-size": "20px"}
-        self.amp_plot_styles = {"color": "yellow", "font-size": "20px"}
+        :param main_window: Reference to the main application window.
+        """
+        self.driver_widgets = {}        # Dictionary to store plot widgets for each driver
+        self.hover_labels = {}          # Dictionary to store hover labels for each driver
+        self.infinite_lines = {}        # Dictionary to store InfiniteLines for each driver
+        self.driver = ["LH_Abd", "RH_Abd", "LH_Rot", "RH_Rot", "LH_Flex", "RH_Flex", "LK", "RK",
+                       "LA_Lat", "RA_Lat", "LA_Med", "RA_Med"]
 
-        self.init_plots(main_window)
+        self.temp_plot_styles = {"color": "black", "font-size": "20px"}  # Styles for temperature plots
+        self.amp_plot_styles = {"color": "yellow", "font-size": "20px"}  # Styles for amplitude plots
+
+        self.init_plots(main_window)   # Initialize the plots upon instantiation
 
     def init_plots(self, main_window):
+        """
+        Initializes the plots for each driver using PyQtGraph PlotWidget.
+
+        :param main_window: Reference to the main application window.
+        """
         for driver in self.driver:
             # Initialize plot widget
             plot_graph = pg.PlotWidget()
@@ -62,40 +76,51 @@ class DriversPlotsWidgets:
 
             # Connect the mouse move event to the custom function
             plot_graph.scene().sigMouseMoved.connect(
-                lambda pos, plot=plot_graph, label=hover_label, line=inf_line: self.on_mouse_moved(pos, plot, label,
-                                                                                                   line))
+                lambda pos, plot=plot_graph, label=hover_label, line=inf_line: self.on_mouse_moved(pos, plot, label, line))
 
     def on_mouse_moved(self, pos, plot_graph, hover_label, inf_line):
+        """
+        Updates hover label and vertical cursor line position on mouse move over the plot.
+
+        :param pos: Position of the mouse cursor.
+        :param plot_graph: PlotWidget instance.
+        :param hover_label: QLabel instance for displaying hover information.
+        :param inf_line: InfiniteLine instance for vertical cursor.
+        """
         vb = plot_graph.plotItem.vb
         if plot_graph.sceneBoundingRect().contains(pos):
             mouse_point = vb.mapSceneToView(pos)
 
-            # Taking dimensions et mouse pos
             x = mouse_point.x()
             y = mouse_point.y()
+
             x_range = plot_graph.getViewBox().viewRange()[0]
             x_start, x_end = x_range
             axe_x_length = x_end - x_start
 
-            # Handling Label for position mouse update
+            # Update hover label with mouse position information
             hover_label.setText(f"x={x:.2f}, y={y:.2f}")
             hover_label.move(QCursor.pos())
 
-            # Handling vertical line item for mouse pos
-            self.remove_infinite_lines(plot_graph) # Remove ancient infinite_lines pos
-
-            pen_width = axe_x_length * 0.02 # Taking 1% of the x axe width
+            # Update vertical cursor line position
+            self.remove_infinite_lines(plot_graph)  # Remove previous infinite line
+            pen_width = axe_x_length * 0.02  # 2% of the x-axis width
             pen = QPen(QColor(0, 0, 255, 128))  # Blue with 50% opacity (255 * 0.5 = 128)
             pen.setWidthF(pen_width)
 
             inf_line.setPen(pen)
-
             inf_line.setPos(x)
             inf_line.show()
+
             if inf_line not in plot_graph.items():
                 plot_graph.addItem(inf_line)
 
     def update_plots(self, time_data):
+        """
+        Updates the plots with new data.
+
+        :param time_data: DataFrame containing time and driver data.
+        """
         time_seconds = (time_data['Usage_time'].apply(self.time_to_seconds) -
                         time_data['Usage_time'].apply(self.time_to_seconds).min())
 
@@ -114,22 +139,43 @@ class DriversPlotsWidgets:
                 plot_graph.setLimits(xMin=0, xMax=time_seconds.max() + time_seconds.max() * 0.01,
                                      yMin=0, yMax=110)
 
+    def plot_line(self, plot_graph, name, time, data, pen, brush, axis):
+        """
+        Plots a line on the specified plot graph.
 
-    def plot_line(self, plot_graph, name, time, temperature, pen, brush, axis):
+        :param plot_graph: PlotWidget instance.
+        :param name: Name of the line.
+        :param time: Time data for x-axis.
+        :param data: Data to plot on y-axis.
+        :param pen: Pen for the line.
+        :param brush: Brush color for the line.
+        :param axis: Axis ('left' or 'right') to associate the line with.
+        """
         plot_graph.plot(
             time,
-            temperature,
+            data,
             name=name,
             pen=pen,
             axis=axis
         )
 
     def remove_infinite_lines(self, plot_graph):
-        for driver , line in self.infinite_lines.items():
+        """
+        Removes all InfiniteLines from the specified plot graph.
+
+        :param plot_graph: PlotWidget instance.
+        """
+        for driver, line in self.infinite_lines.items():
             plot_graph.removeItem(line)
         plot_graph.update()
 
     def time_to_seconds(self, time_string):
+        """
+        Converts a time string formatted as HH:MM:SS:mmm to seconds.
+
+        :param time_string: Time string in HH:MM:SS:mmm format.
+        :return: Total time in seconds.
+        """
         parts = time_string.split(':')
         hours = int(parts[0]) * 3600
         minutes = int(parts[1]) * 60
